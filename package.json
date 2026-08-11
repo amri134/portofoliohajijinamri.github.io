@@ -1,0 +1,12 @@
+{
+  "name": "portofolio17",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio web Hajijin Amri",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}
