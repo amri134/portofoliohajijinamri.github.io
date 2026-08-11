@@ -7,6 +7,9 @@ const previewModal = document.querySelector('.certificate-preview');
 const moreCertificatesModal = document.querySelector('.more-certificates-modal');
 let activeCertificate = null;
 let returnToContact = false;
+const firstProject = document.querySelector('#proyek .project-group');
+if (firstProject) firstProject.open = true;
+document.querySelectorAll('img').forEach(image => { image.loading = image.classList.contains('avatar') ? 'eager' : 'lazy'; image.decoding = 'async'; });
 
 menuButton.addEventListener('click', () => {
   const isOpen = nav.classList.toggle('open');
