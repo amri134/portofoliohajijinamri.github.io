@@ -4,6 +4,7 @@ const nav = document.querySelector('.nav-menu');
 const themeButton = document.querySelector('.theme-toggle');
 const detailModal = document.querySelector('.certificate-modal');
 const previewModal = document.querySelector('.certificate-preview');
+const moreCertificatesModal = document.querySelector('.more-certificates-modal');
 let activeCertificate = null;
 let returnToContact = false;
 
@@ -28,7 +29,7 @@ function populateDetails(certificate) {
   detailModal.querySelector('.modal-document').src = certificate.image;
 }
 
-document.querySelectorAll('#sertifikat .certificate-item').forEach(item => item.addEventListener('click', () => {
+document.querySelectorAll('#sertifikat .certificate-item:not(.more-certificates-trigger)').forEach(item => item.addEventListener('click', () => {
   activeCertificate = item.dataset;
   previewModal.querySelector('.preview-issuer').textContent = activeCertificate.issuer;
   previewModal.querySelector('.preview-title').textContent = activeCertificate.title;
@@ -44,12 +45,14 @@ document.querySelector('.open-certificate-details').addEventListener('click', ()
 
 document.querySelector('.close-preview').addEventListener('click', () => previewModal.close());
 document.querySelector('.close-modal').addEventListener('click', () => detailModal.close());
+document.querySelector('.more-certificates-trigger').addEventListener('click', () => moreCertificatesModal.showModal());
+document.querySelector('.close-more-cert').addEventListener('click', () => moreCertificatesModal.close());
 detailModal.addEventListener('close', () => {
   const certificateSection = document.querySelector('#sertifikat');
   document.querySelector('.certificate-group').open = true;
   certificateSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
-[previewModal, detailModal].forEach(modal => modal.addEventListener('click', event => {
+[previewModal, detailModal, moreCertificatesModal].forEach(modal => modal.addEventListener('click', event => {
   if (event.target === modal) modal.close();
 }));
 
