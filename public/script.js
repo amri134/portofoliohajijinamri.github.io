@@ -9,6 +9,19 @@ let activeCertificate = null;
 let returnToContact = false;
 const firstProject = document.querySelector('#proyek .project-group');
 if (firstProject) firstProject.open = true;
+const certificateGroup = document.querySelector('#sertifikat .certificate-group');
+if (certificateGroup) certificateGroup.open = false;
+const certificateList = document.querySelector('#sertifikat .certificate-list');
+const moreCertificateTrigger = certificateList?.querySelector('.more-certificates-trigger');
+if (certificateList && moreCertificateTrigger && !certificateList.querySelector('[data-title="PEDAS Bronze Award"]')) {
+  const pedas = document.createElement('button');
+  pedas.className = 'certificate-item'; pedas.dataset.title = 'PEDAS Bronze Award'; pedas.dataset.issuer = 'APTIKOM'; pedas.dataset.issued = '19 September 2025'; pedas.dataset.valid = 'Peraih Bronze Award'; pedas.dataset.image = '/sertifikat/pedas.jpg';
+  pedas.innerHTML = '<span class="certificate-item-icon">★</span><span><strong>PEDAS Bronze Award</strong><small>APTIKOM · Peraih Bronze Award 2025</small></span><i>›</i>';
+  pedas.addEventListener('click', () => { activeCertificate = pedas.dataset; previewModal.querySelector('.preview-issuer').textContent = activeCertificate.issuer; previewModal.querySelector('.preview-title').textContent = activeCertificate.title; previewModal.querySelector('.preview-document').src = activeCertificate.image; previewModal.showModal(); });
+  certificateList.insertBefore(pedas, moreCertificateTrigger);
+}
+const modalDocument = document.querySelector('.modal-document');
+if (modalDocument) modalDocument.addEventListener('click', () => modalDocument.classList.toggle('zoomed'));
 const projectGroups = document.querySelector('#proyek .project-groups');
 if (projectGroups) {
   const projects = [...projectGroups.querySelectorAll('.project-group')];
@@ -61,6 +74,16 @@ document.querySelectorAll('#sertifikat .certificate-item:not(.more-certificates-
   previewModal.querySelector('.preview-document').src = activeCertificate.image;
   previewModal.showModal();
 }));
+function openCertificateByTitle(title) {
+  const item = [...document.querySelectorAll('#sertifikat .certificate-item')].find(entry => entry.dataset.title === title);
+  if (!item) return;
+  certificateGroup.open = true;
+  item.click();
+  document.querySelector('#sertifikat').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+document.querySelectorAll('.project-link[data-certificate-title]').forEach(link => link.addEventListener('click', event => { event.preventDefault(); openCertificateByTitle(link.dataset.certificateTitle); }));
+const projectCertificateMap = {'Lihat sertifikat Cloud Computing →':'Bangkit Cloud Computing','Lihat sertifikasi terkait →':'PEDAS Bronze Award','Lihat sertifikat PBI →':'Data Scientist Project-Based Internship'};
+document.querySelectorAll('.project-link').forEach(link => { const title = projectCertificateMap[link.textContent.trim()]; if (title) { link.dataset.certificateTitle = title; link.addEventListener('click', event => { event.preventDefault(); openCertificateByTitle(title); }); } });
 
 document.querySelector('.open-certificate-details').addEventListener('click', () => {
   populateDetails(activeCertificate);
