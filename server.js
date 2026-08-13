@@ -1,9 +1,9 @@
-const http = require("http");
+﻿const http = require("http");
 const fs = require("fs");
 const path = require("path");
 
 const port = process.env.PORT || 3000;
-const root = __dirname;
+const root = path.join(__dirname, "dist");
 const mimeTypes = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
@@ -18,7 +18,7 @@ const mimeTypes = {
 
 const server = http.createServer((request, response) => {
   const requestPath = decodeURIComponent(request.url.split("?")[0]);
-  const relativePath = requestPath === "/" ? "/index.html" : requestPath;
+  const relativePath = requestPath === "/" || requestPath === "/favicon.ico" ? (requestPath === "/favicon.ico" ? "/favicon.svg" : "/index.html") : requestPath;
   const filePath = path.resolve(root, `.${relativePath}`);
 
   if (!filePath.startsWith(root + path.sep)) {
@@ -43,3 +43,4 @@ const server = http.createServer((request, response) => {
 server.listen(port, () => {
   console.log(`Portfolio server running on port ${port}`);
 });
+

@@ -1,0 +1,185 @@
+{
+    "quickLinks": [
+        {
+            "title": "Web ini",
+            "url": "https://jinam.app",
+            "icon": "website",
+            "enabled": false
+        },
+        {
+            "title": "GitHub",
+            "url": "https://github.com/amri134",
+            "icon": "github",
+            "enabled": false
+        },
+        {
+            "title": "LinkedIn",
+            "url": "https://www.linkedin.com/in/hajijin-amri-5509b0206/",
+            "icon": "linkedin",
+            "enabled": true
+        },
+        {
+            "title": "Instagram",
+            "url": "https://www.instagram.com/hajijin_amri?igsh=MXBsYjhmNWJ4OWFycQ==",
+            "icon": "instagram",
+            "enabled": true
+        }
+    ],
+
+    "groups": [
+        {
+            "id": "portfolio",
+            "title": "portfolio",
+            "defaultOpen": false,
+            "items": [
+                {
+                    "id": "cv-qris",
+                    "title": "Proyek",
+                    "description": "convert qris static to dinamis",
+                    "url": "https://qris.jinam.app",
+                    "icon": "assets/icons/qris.png",
+                    "newTab": true,
+                    "enabled": true,
+                    "statusCheck": true
+                },
+                {
+                    "title": "Learning Transcript",
+                    "description": "Transcript Cisco Networking Academy",
+                    "url": "https://drive.google.com/file/d/1FG5pBdMEvdsZTKZATWxIaR3QsPiB821Z/view?usp=drive_link",
+                    "icon": "assets/icons/netacad.svg",
+                    "newTab": true,
+                    "enabled": true
+                },
+                {
+                    "title": "Google Skills",
+                    "description": "Badge",
+                    "url": "https://www.skills.google/public_profiles/64cd8a16-6afc-4322-8e79-5f976c68c85d",
+                    "icon": "assets/icons/gs.png",
+                    "newTab": true,
+                    "enabled": true
+                },
+                {
+                    "title": "Credly v1",
+                    "description": "Badge Cisco Networking Academy",
+                    "url": "https://www.credly.com/users/hajijin-amri",
+                    "icon": "assets/icons/credly.svg",
+                    "newTab": true,
+                    "enabled": true
+                },
+                                {
+                    "title": "Credly v2",
+                    "description": "Badge Google Skills",
+                    "url": "https://www.credly.com/users/hajijin-amri.61a238eb",
+                    "icon": "assets/icons/credly.svg",
+                    "newTab": true,
+                    "enabled": true
+                },
+
+                {
+                    "title": "GitHub",
+                    "description": "Repositori Random",
+                    "url": "https://github.com/amri134",
+                    "icon": "github",
+                    "newTab": true,
+                    "enabled": true
+                }
+            ]
+        },
+
+        {
+            "id": "social-media",
+            "title": "Social Media",
+            "defaultOpen": false,
+            "items": [
+                {
+                    "title": "LinkedIn",
+                    "description": "Hajijin Amri",
+                    "url": "https://www.linkedin.com/in/hajijin-amri-5509b0206/",
+                    "icon": "linkedin",
+                    "newTab": true,
+                    "enabled": true
+                },
+                {
+                    "title": "Instagram",
+                    "description": "Hajijin Amri",
+                    "url": "https://www.instagram.com/hajijin_amri?igsh=MXBsYjhmNWJ4OWFycQ==",
+                    "icon": "instagram",
+                    "newTab": true,
+                    "enabled": true
+                },
+                {
+                    "title": "Facebook",
+                    "description": "Hajijin Amri",
+                    "url": "https://facebook.com/hajijin.amri.9",
+                    "icon": "assets/icons/fb.png",
+                    "newTab": true,
+                    "enabled": true
+                },
+                {
+                    "title": "Youtube",
+                    "description": "Berisi Video untuk tugas dan tutorial",
+                    "url": "https://www.youtube.com/@hajijinamri6706",
+                    "icon": "assets/icons/yt.png",
+                    "newTab": true,
+                    "enabled": true
+                }
+            ]
+        },
+
+        {
+            "id": "contact",
+            "title": "Contact",
+            "defaultOpen": false,
+            "items": [
+                {
+                    "title": "Email",
+                    "description": "Hajijin Amri",
+                    "url": "mailto:hajijinamri@gmail.com",
+                    "icon": "email",
+                    "newTab": false,
+                    "enabled": true
+                }
+            ]
+        },
+
+        {
+            "id": "blog",
+            "title": "Blog",
+            "defaultOpen": false,
+            "items": [
+                {
+                    "title": "Personal Blog",
+                    "description": "Artikel dan tulisan saya",
+                    "url": "https://domainanda.com/blog",
+                    "icon": "blog",
+                    "newTab": true,
+                    "enabled": false
+                }
+            ]
+        },
+
+        {
+            "id": "publication",
+            "title": "Publication",
+            "defaultOpen": false,
+            "items": [
+                {
+                    "title": "Google Scholar",
+                    "description": "Publikasi dan karya ilmiah",
+                    "url": "https://scholar.google.co.id/scholar?hl=id&as_sdt=0%2C5&q=hajijin+amri&btnG=",
+                    "icon": "publication",
+                    "newTab": true,
+                    "enabled": true
+                },
+                {
+                    "title": "DOI",
+                    "description": "Jurnal",
+                    "url": "https://doi.org/10.36378/jtos.v8i1.4403",
+                    "icon": "publication",
+                    "newTab": true,
+                    "enabled": true
+                }
+            ]
+        }
+    ]
+}

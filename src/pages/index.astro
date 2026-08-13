@@ -1,0 +1,17 @@
+---
+// The existing portfolio remains the source of truth while the Astro shell
+// provides the modern build pipeline and a safe migration path for components.
+const legacyPath = "/legacy.html";
+---
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Hajijin Amri — Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body style="margin:0; min-height:100vh; background:#0f141c;">
+    <iframe src={legacyPath} title="Portfolio Hajijin Amri" style="display:block; width:100vw; height:100vh; border:0;" />
+  </body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hajijin Amri — Portfolio</title>
+  <meta name="description" content="Portfolio Hajijin Amri, fresh graduate Teknik Informatika dengan fokus networking, cloud computing, Linux, data engineering, dan computer vision." />
+  <meta name="author" content="Hajijin Amri" />
+  <meta name="theme-color" content="#11151c" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hajijin Amri — Portfolio" />
+  <meta property="og:description" content="Portfolio dan profil profesional Hajijin Amri." />
+  <meta property="og:image" content="foto.png" />
+  <meta property="og:locale" content="id_ID" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Hajijin Amri — Portfolio" />
+  <meta name="twitter:description" content="Portfolio dan profil profesional Hajijin Amri." />
+  <meta name="twitter:image" content="foto.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hajijin Amri",
+    "jobTitle": "Fresh Graduate Teknik Informatika",
+    "description": "Fresh graduate Teknik Informatika dengan fokus networking, cloud computing, Linux, data engineering, dan computer vision.",
+    "image": "foto.png",
+    "email": "mailto:hajijinamri@gmail.com",
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "STMIK IKMI Cirebon" },
+      { "@type": "EducationalOrganization", "name": "SMKN 1 Kota Cirebon" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/hajijin-amri-5509b0206/",
+      "https://github.com/amri134",
+      "https://www.instagram.com/hajijin_amri",
+      "https://jinam.app"
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .experience-table td { vertical-align: top; }
+    .experience-table ul { margin: 0; padding-left: 20px; color: var(--muted); }
+    .experience-table li + li { margin-top: 7px; }
+    @media (max-width: 720px) {
+      .experience-table, .experience-table tbody, .experience-table tr, .experience-table td { display: block; width: 100%; }
+      .experience-table thead { display: none; }
+      .experience-table tr { padding: 18px 20px; border-bottom: 1px solid var(--line); }
+      .experience-table tr:last-child { border: 0; }
+      .experience-table td { border: 0; padding: 7px 0; }
+      .experience-table td::before { content: attr(data-label); display: block; margin-bottom: 3px; color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+      .experience-table td[data-label="Tanggung jawab"] { padding-top: 13px; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .certificate-card { border-radius: 20px; }
+      .certificate-photo { object-fit: cover; object-position: center; }
+    }
+    @media (min-width: 721px) and (max-width: 1024px) { main { width: min(100% - 64px, 940px); } .nav-menu { gap: 15px; margin-left: 20px; } }
+    @media (max-width: 1024px) {
+      .table-wrap { overflow: visible; }
+      .experience-table, .experience-table tbody, .experience-table tr, .experience-table td { display: block; width: 100%; min-width: 0; }
+      .experience-table { min-width: 0; }
+      .experience-table thead { display: none; }
+      .experience-table tr { padding: 22px 24px; border-bottom: 1px solid var(--line); }
+      .experience-table tr:last-child { border-bottom: 0; }
+      .experience-table td { border: 0; padding: 8px 0; white-space: normal; overflow-wrap: anywhere; }
+      .experience-table td::before { content: attr(data-label); display: block; margin-bottom: 3px; color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+      .experience-table td[data-label="Tanggung jawab"] { padding-top: 14px; }
+    }
+    @media (max-width: 380px) { main { width: min(100% - 28px, 940px); } .brand { font-size: 20px; } .theme-toggle { display: none; } .identity { gap: 7px; } }
+    .contact-strip { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .contact-strip a, .link-card { color: var(--text); text-decoration: none; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+    .contact-strip a { padding: 10px 16px; border-radius: 999px; font-weight: 600; }
+    .contact-strip a:hover, .link-card:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .contact-section { padding-top: 20px; }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .link-card { min-height: 116px; padding: 22px; border-radius: 18px; transition: .2s ease; }
+    .link-card small { display: block; color: var(--muted); font-size: 14px; margin-bottom: 6px; }
+    .link-card strong { font-family: "Plus Jakarta Sans", sans-serif; font-size: 18px; }
+    .link-card span { float: right; color: var(--accent); }
+    .contact-grid { grid-template-columns: repeat(4, 1fr); }
+    .link-card { min-height: 0; display: flex; align-items: center; gap: 12px; padding: 17px 18px; }
+    .link-card small { display: none; }
+    .link-card strong { font-size: 16px; letter-spacing: -.02em; flex: 1; }
+    .link-icon { flex: 0 0 34px; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font: 700 14px/1 "DM Sans", sans-serif; }
+    .link-card strong span { float: none; }
+    @media (max-width: 1024px) { .nav-menu { display: none; position: absolute; top: 90px; right: 0; width: min(100vw - 32px, 420px); padding: 28px; flex-direction: column; gap: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); } .menu-button { display: block; } .contact-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .contact-grid { grid-template-columns: 1fr; } .contact-strip { justify-content: flex-start; } .contact-strip a { flex: 1 1 auto; text-align: center; } }
+    /* Pastikan semua perangkat memakai lebar viewport yang sebenarnya, tanpa overflow horizontal. */
+    html, body { max-width: 100%; overflow-x: hidden; }
+    :where(a, button, summary):focus-visible { outline: 3px solid #7db2ff; outline-offset: 4px; }
+    :where(button, .contact-strip a, .certificate-item, .link-card) { min-height: 44px; }
+    @media (prefers-contrast: more) { :root { --line: #9aa7b8; } .certificate-item, .link-card, .contact-strip a { border-width: 2px; } }
+    main { width: min(calc(100% - 48px), 940px); }
+    @media (max-width: 720px) { main { width: min(calc(100% - 36px), 940px); } }
+    @media (max-width: 380px) { main { width: min(calc(100% - 28px), 940px); } }
+    @media (max-width: 520px) {
+      .contact-strip { display: grid; grid-template-columns: 1fr; width: 100%; }
+      .contact-strip a { width: 100%; min-width: 0; white-space: normal; }
+    }
+    @media (max-width: 1024px) {
+      .education-table, .education-table tbody, .education-table tr, .education-table td { display: block; width: 100%; min-width: 0; }
+      .education-table { min-width: 0; }
+      .education-table thead { display: none; }
+      .education-table tr { padding: 22px 24px; border-bottom: 1px solid var(--line); }
+      .education-table tr:last-child { border-bottom: 0; }
+      .education-table td { border: 0; padding: 8px 0; white-space: normal; overflow-wrap: anywhere; }
+      .education-table td::before { content: attr(data-label); display: block; margin-bottom: 3px; color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    }
+    .certificate-group { overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); box-shadow: var(--shadow); }
+    .certificate-group summary { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 24px 28px; cursor: pointer; list-style: none; }
+    .certificate-group summary::-webkit-details-marker { display: none; }
+    .certificate-group summary b { display: block; font: 700 22px "Plus Jakarta Sans", sans-serif; }
+    .certificate-group summary small, .certificate-item small { display: block; color: var(--muted); margin-top: 3px; }
+    .certificate-group summary i { font-style: normal; font-size: 24px; transition: transform .2s ease; }
+    .certificate-group[open] summary i { transform: rotate(180deg); }
+    .certificate-list { padding: 0 18px 18px; display: grid; gap: 10px; }
+    .certificate-item { width: 100%; display: flex; align-items: center; gap: 14px; padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--surface) 80%, var(--bg)); color: var(--text); text-align: left; cursor: pointer; transition: .2s ease; }
+    .certificate-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .certificate-item-icon { width: 38px; height: 38px; display: grid; place-items: center; flex: 0 0 38px; border-radius: 11px; background: var(--accent); color: #fff; font-weight: 800; }
+    .certificate-item strong { font: 700 17px "Plus Jakarta Sans", sans-serif; }
+    .certificate-item > i { margin-left: auto; color: var(--accent); font-size: 24px; font-style: normal; }
+    .certificate-preview { width: min(92vw, 850px); max-height: 92vh; border: 0; border-radius: 28px; padding: 48px; background: var(--surface); color: var(--text); box-shadow: 0 24px 70px #0005; }
+    .certificate-preview::backdrop { background: #1017269c; backdrop-filter: blur(4px); }
+    .close-preview { position: absolute; top: 20px; right: 22px; width: 46px; height: 46px; border: 0; border-radius: 50%; background: #f3f4f6; color: var(--muted); font-size: 30px; cursor: pointer; }
+    .preview-issuer { margin: 0; color: var(--muted); font-size: 18px; }.preview-title { margin: 4px 0 22px; font-size: clamp(28px, 5vw, 40px); }.preview-document { display: block; width: 100%; max-height: 55vh; object-fit: contain; border-radius: 16px; background: #eef2f7; }.open-certificate-details { width: 100%; margin-top: 20px; padding: 15px; border: 0; border-radius: 99px; background: var(--accent); color: #fff; font: 700 16px "Plus Jakarta Sans", sans-serif; cursor: pointer; }
+    .certificate-modal .modal-document { display: block; width: 100%; height: auto; max-height: 48vh; margin-top: 24px; object-fit: contain; border-radius: 16px; background: #eef2f7; }
+    .more-certificates-modal { width: min(92vw, 520px); border: 0; border-radius: 24px; padding: 36px; background: var(--surface); color: var(--text); box-shadow: 0 24px 70px #0005; } .more-certificates-modal::backdrop { background: #1017269c; backdrop-filter: blur(4px); } .more-certificates-modal h2 { margin: 0 0 8px; font-size: 28px; } .more-certificates-modal p { margin: 0 0 22px; color: var(--muted); } .more-cert-link { display: flex; align-items: center; gap: 14px; width: 100%; margin-top: 10px; padding: 15px; border: 1px solid var(--line); border-radius: 14px; color: var(--text); text-decoration: none; font-weight: 700; } .more-cert-link:hover { border-color: var(--accent); color: var(--accent); } .more-cert-link > span:first-child { width: 36px; height: 36px; display: grid; place-items: center; flex: 0 0 36px; border-radius: 10px; background: var(--accent); color: #fff; } .more-cert-link > span:last-child { display: block; } .more-cert-link small { display: block; margin-top: 3px; color: var(--muted); font-weight: 400; } .close-more-cert { float: right; border: 0; background: transparent; color: var(--muted); font-size: 26px; cursor: pointer; }
+    @media (max-width: 520px) { .certificate-group summary { padding: 20px; }.certificate-group summary b { font-size: 19px; }.certificate-list { padding: 0 12px 12px; }.certificate-item { padding: 14px 12px; gap: 10px; }.certificate-item strong { font-size: 15px; }.certificate-item small { font-size: 13px; }.certificate-preview { padding: 34px 18px; }.preview-document { max-height: 50vh; } }
+    @media (max-width: 520px) { .contact-strip { display: flex; width: auto; justify-content: center; gap: 14px; } .contact-strip a[aria-label] { width: 58px; height: 58px; flex: 0 0 58px; padding: 7px; border-radius: 50%; } .contact-strip .quick-icon { width: 100%; height: 100%; font-size: 25px; } }
+    /* Skala teks yang lebih ringkas dan nyaman pada semua ukuran layar. */
+    h1 { font-size: clamp(38px, 6vw, 60px); } h2 { font-size: clamp(30px, 4.4vw, 42px); } .intro { font-size: clamp(18px, 2.2vw, 23px); } .section-heading p { font-size: 18px; }
+    .contact-group .certificate-item { text-decoration: none; }.contact-group .certificate-item strong { font-size: 16px; }
+    .contact-strip .quick-icon { width: 42px; height: 42px; display: grid; place-items: center; font: 700 19px/1 "DM Sans", sans-serif; }
+    .contact-strip .quick-icon svg { width: 24px; height: 24px; display: block; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+    .hero .intro { text-align: justify; text-justify: inter-word; }
+    .contact-strip a[aria-label] { padding: 9px; }
+    .skill-groups { display: grid; gap: 12px; } .skill-group { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); } .skill-group summary { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; cursor: pointer; list-style: none; font: 700 16px "Plus Jakarta Sans", sans-serif; } .skill-group summary::-webkit-details-marker { display: none; } .skill-group summary i { color: var(--accent); font-size: 22px; font-style: normal; transition: transform .2s; } .skill-group[open] summary i { transform: rotate(180deg); } .skill-group .skills { padding: 0 22px 22px; }
+    .project-groups { display: grid; gap: 12px; } .project-group { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); } .project-group summary { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; cursor: pointer; list-style: none; font: 700 16px "Plus Jakarta Sans", sans-serif; } .project-group summary::-webkit-details-marker { display: none; } .project-group summary i { color: var(--accent); font-size: 22px; font-style: normal; transition: transform .2s; } .project-group[open] summary i { transform: rotate(180deg); } .project-content { padding: 0 22px 22px; color: var(--muted); } .project-content h3 { margin: 0 0 8px; color: var(--text); font-size: 22px; } .project-content p { margin: 0 0 14px; } .project-content ul { margin: 0; padding-left: 20px; } .project-content li + li { margin-top: 6px; } .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; } .project-tags span { padding: 5px 11px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); font-size: 13px; font-weight: 700; }
+    section { padding-top: 68px; padding-bottom: 68px; } #keahlian { padding-top: 30px; padding-bottom: 46px; }
+    .avatar-photo { display: block; object-fit: cover; object-position: center 14%; }
+    @media (max-width: 520px) { h1 { font-size: 38px; } h2 { font-size: 31px; margin-bottom: 25px; } .intro { font-size: 18px; } .section-heading p { font-size: 16px; } }
+  </style>
+</head>
+<body class="dark">
+  <header class="site-header">
+    <a class="brand" href="#tentang">Hajijin Amri</a>
+    <div class="header-actions">
+      <button class="icon-button theme-toggle" aria-label="Ubah tema"><span>☾</span></button>
+      <button class="menu-button" aria-label="Buka navigasi" aria-expanded="false"><i></i><i></i><i></i></button>
+    </div>
+    <nav class="nav-menu" aria-label="Navigasi utama">
+      <a href="#tentang">Tentang</a><a href="#pengalaman">Pengalaman</a><a href="#pendidikan">Pendidikan</a><a href="#proyek">Proyek</a><a href="#keahlian">Keahlian</a><a href="#sertifikat">Sertifikasi</a><a href="#kontak">Kontak</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="tentang">
+      <img class="avatar avatar-photo" src="foto.png" alt="Foto profil Hajijin Amri" />
+      <p class="eyebrow">PROFIL PROFESIONAL &middot; TEKNIK INFORMATIKA</p>
+      <h1>Hajijin Amri</h1>
+      <div class="identity"><span>Cirebon, Indonesia</span><b>&middot;</b><span>STMIK IKMI Cirebon</span></div>
+      <div class="contact-strip" aria-label="Kontak utama"><a href="mailto:hajijinamri@gmail.com" target="_blank" rel="noreferrer" aria-label="Email Hajijin Amri" title="Email"><span class="quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span></a><a href="https://www.linkedin.com/in/hajijin-amri-5509b0206/" target="_blank" rel="noreferrer" aria-label="LinkedIn Hajijin Amri" title="LinkedIn"><span class="quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9v9M6 5v.01M10 18v-5a4 4 0 0 1 8 0v5M10 9v9"/></svg></span></a><a href="https://jinam.app" target="_blank" rel="noreferrer" aria-label="Website jinam.app" title="Website"><span class="quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span></a></div>
+      <p class="intro">Lulusan <u>S1 Teknik Informatika</u> STMIK IKMI Cirebon dengan IPK 3,65 dan pengalaman administrasi data serta dokumen akreditasi. Fokus pada networking, cloud computing, data science, dan computer vision.</p>
+    </section>
+
+    <section id="pengalaman"><h2>Pengalaman</h2><div class="table-wrap"><table class="experience-table"><thead><tr><th>Peran</th><th>Instansi</th><th>Periode</th><th>Tanggung jawab</th></tr></thead><tbody><tr><td data-label="Peran">Administrasi Data</td><td data-label="Instansi">Tim Pendukung Akreditasi<br>Program Studi Teknik Informatika</td><td data-label="Periode">Maret 2025 — Agustus 2025</td><td data-label="Tanggung jawab"><ul><li>Mengelola dokumen akreditasi, pengarsipan, input data, serta pemeriksaan kelengkapan administrasi.</li><li>Menata dokumen dan bukti dukung agar konsisten, mudah ditelusuri, dan siap digunakan dalam proses akreditasi.</li></ul></td></tr></tbody></table></div></section>
+
+    <section id="pendidikan"><h2>Pendidikan</h2><div class="table-wrap"><table class="education-table"><thead><tr><th>Institusi</th><th>Jurusan</th><th>Tahun</th></tr></thead><tbody><tr><td data-label="Institusi">STMIK IKMI Cirebon</td><td data-label="Jurusan">Teknik Informatika</td><td data-label="Tahun">2022 — 2026</td></tr><tr><td data-label="Institusi">SMKN 1 Kota Cirebon</td><td data-label="Jurusan">Teknik Komputer dan Jaringan</td><td data-label="Tahun">2018 — 2021</td></tr></tbody></table></div></section>
+
+    <section id="proyek"><h2>Proyek</h2><div class="project-groups"><details class="project-group"><summary>ByeTrash — Waste Classification System <i>&#8964;</i></summary><div class="project-content"><h3>Capstone Project Bangkit Academy 2024</h3><ul><li>Mengembangkan sistem computer vision untuk mengklasifikasikan sampah organik, non-organik, dan berbahaya berdasarkan gambar.</li><li>Melakukan deployment model pada Google Cloud dan menyediakan layanan prediksi melalui REST API.</li><li>Mengintegrasikan API dengan website serta melakukan pengujian dan troubleshooting proses inferensi.</li></ul><div class="project-tags"><span>Computer Vision</span><span>Google Cloud</span><span>REST API</span></div></div></details><details class="project-group"><summary>Sistem Absensi Wajah <i>&#8964;</i></summary><div class="project-content"><h3>Publikasi Ilmiah</h3><p>Mengembangkan dan mendokumentasikan sistem absensi wajah berbasis CNN dengan pendekatan MobileNet dan MTCNN untuk proses pengenalan wajah.</p><div class="project-tags"><span>CNN</span><span>MobileNet</span><span>MTCNN</span><span>Face Recognition</span></div></div></details><details class="project-group"><summary>Campus Student Face Detection <i>&#8964;</i></summary><div class="project-content"><h3>Proyek Computer Vision</h3><p>Mengembangkan konsep deteksi wajah mahasiswa di lingkungan kampus sebagai penerapan computer vision untuk kebutuhan identifikasi dan analisis citra.</p><div class="project-tags"><span>Face Detection</span><span>Computer Vision</span></div></div></details><details class="project-group"><summary>Prediksi Tren Otomotif Indonesia <i>&#8964;</i></summary><div class="project-content"><h3>Proyek Analitik Time Series</h3><p>Menganalisis tren otomotif Indonesia menggunakan pendekatan modern time series forecasting untuk membantu menghasilkan prediksi berbasis data.</p><div class="project-tags"><span>Data Analysis</span><span>Time Series</span><span>Forecasting</span></div></div></details><details class="project-group"><summary>Student Subdomain &amp; Mail Service <i>&#8964;</i></summary><div class="project-content"><h3>Layanan Infrastruktur Mahasiswa</h3><p>Merancang layanan subdomain dan email mahasiswa untuk mendukung akses informasi, komunikasi, dan pengelolaan layanan digital kampus.</p><div class="project-tags"><span>Linux</span><span>System Administration</span><span>Mail Service</span></div></div></details><details class="project-group"><summary>Data Science Home Credit Indonesia <i>&#8964;</i></summary><div class="project-content"><h3>Project-Based Internship 2025</h3><p>Menyelesaikan program Data Scientist Project-Based Internship dengan skor rata-rata 85,5 (Excellent), mencakup pembelajaran machine learning, programming, dan business acumen.</p><div class="project-tags"><span>Data Science</span><span>Machine Learning</span><span>Programming</span></div></div></details></div></section>
+
+    <section id="keahlian"><h2>Keahlian</h2><div class="skill-groups"><details class="skill-group"><summary>Networking &amp; Infrastruktur <i>&#8964;</i></summary><div class="skills"><span>Network Administration</span><span>Routing &amp; Switching</span><span>Instalasi &amp; Pengkabelan</span><span>Troubleshooting Jaringan</span><span>Monitoring Jaringan</span><span>Cisco Networking Academy</span></div></details><details class="skill-group"><summary>System &amp; Cloud <i>&#8964;</i></summary><div class="skills"><span>Linux System Administration</span><span>Cloud Computing</span><span>Google Cloud</span><span>REST API</span><span>Deployment Model</span><span>Dokumentasi Teknis</span></div></details><details class="skill-group"><summary>Data &amp; Computer Vision <i>&#8964;</i></summary><div class="skills"><span>Data Management</span><span>Data Engineering</span><span>Image Classification</span><span>Convolutional Neural Network</span><span>MobileNet</span><span>MTCNN</span><span>Model Inference</span></div></details><details class="skill-group"><summary>Administrasi Profesional <i>&#8964;</i></summary><div class="skills"><span>Administrasi Data</span><span>Pengarsipan Dokumen</span><span>Validasi Data</span><span>Integrasi API &amp; Website</span><span>Pengujian Sistem</span><span>Technical Troubleshooting</span></div></details></div></section>
+
+    <section class="certifications" id="sertifikat"><div class="section-heading"><h2>Sertifikasi</h2><p>Pencapaian profesional dan keahlian teknis yang saya miliki.</p></div><details class="certificate-group"><summary><span><b>Sertifikasi &amp; Pelatihan</b><small>5 dokumen terverifikasi</small></span><i>&#8964;</i></summary><div class="certificate-list">
+      <button class="certificate-item" data-title="Network Administrator Muda" data-issuer="BNSP" data-issued="2 Oktober 2024" data-valid="2 Oktober 2027" data-image="sertifikat/BNSP%202024.jpg"><span class="certificate-item-icon">&#10003;</span><span><strong>Network Administrator Muda</strong><small>BNSP &middot; Aktif hingga Oktober 2027</small></span><i>&rsaquo;</i></button>
+      <button class="certificate-item" data-title="Network Administrator Muda" data-issuer="BNSP" data-issued="20 Oktober 2023" data-valid="20 Oktober 2026" data-image="sertifikat/BNSP%202023.jpg"><span class="certificate-item-icon">&#10003;</span><span><strong>Network Administrator Muda</strong><small>BNSP &middot; Berlaku hingga Oktober 2026</small></span><i>&rsaquo;</i></button>
+      <button class="certificate-item" data-title="Bangkit Cloud Computing" data-issuer="Bangkit Academy" data-issued="10 Januari 2025" data-valid="Program selesai" data-image="sertifikat/bangkit.jpg"><span class="certificate-item-icon">&#9729;</span><span><strong>Cloud Computing</strong><small>Bangkit Academy &middot; Selesai 2025</small></span><i>&rsaquo;</i></button>
+      <button class="certificate-item" data-title="Tim Data Dukung Akreditasi" data-issuer="STMIK IKMI Cirebon" data-issued="18 Agustus 2025" data-valid="Pencapaian profesional" data-image="sertifikat/akreditasi.jpg"><span class="certificate-item-icon">&#9733;</span><span><strong>Tim Data Dukung Akreditasi</strong><small>STMIK IKMI Cirebon &middot; Agustus 2025</small></span><i>&rsaquo;</i></button>
+      <button class="certificate-item" data-title="Home Credit Indonesia Data Scientist" data-issuer="Home Credit Indonesia &amp; Rakamin Academy" data-issued="6 Oktober – 3 November 2025" data-valid="Project-Based Internship selesai" data-image="sertifikat/pbi.jpg"><span class="certificate-item-icon">&#9638;</span><span><strong>Data Scientist Project-Based Internship</strong><small>Home Credit Indonesia &middot; Skor 85,5 (Excellent)</small></span><i>&rsaquo;</i></button>
+      <button class="certificate-item more-certificates-trigger" type="button"><span class="certificate-item-icon">+</span><span><strong>More Sertifikat</strong><small>Lihat sertifikat lainnya di profil eksternal</small></span><i>&rsaquo;</i></button>
+    </div></details></section>
+
+    <section class="contact-section" id="kontak"><div class="section-heading"><h2>Kontak &amp; Media Sosial</h2><p>Terhubung melalui kanal profesional, sosial, dan publikasi.</p></div><details class="certificate-group contact-group"><summary><span><b>Tautan Profesional</b><small>9 kanal tersedia</small></span><i>&#8964;</i></summary><div class="certificate-list">
+      <a class="certificate-item" href="https://jinam.app" target="_blank" rel="noreferrer"><span class="certificate-item-icon">+</span><span><strong>More Links</strong><small>Lihat portofolio, transkrip nilai, dan pencapaian saya</small></span><i>&rsaquo;</i></a>
+      <a class="certificate-item" href="https://www.linkedin.com/in/hajijin-amri-5509b0206/" target="_blank" rel="noreferrer"><span class="certificate-item-icon">in</span><span><strong>LinkedIn</strong><small>Profil profesional</small></span><i>&rsaquo;</i></a>
+      <a class="certificate-item" href="mailto:hajijinamri@gmail.com" target="_blank" rel="noreferrer"><span class="certificate-item-icon">@</span><span><strong>Email</strong><small>Hubungi saya secara langsung</small></span><i>&rsaquo;</i></a>
+      <a class="certificate-item" href="https://www.instagram.com/hajijin_amri?igsh=MXBsYjhmNWJ4OWFycQ==" target="_blank" rel="noreferrer"><span class="certificate-item-icon">IG</span><span><strong>Instagram</strong><small>Media sosial</small></span><i>&rsaquo;</i></a>
+      <a class="certificate-item" href="https://github.com/amri134" target="_blank" rel="noreferrer"><span class="certificate-item-icon">GH</span><span><strong>GitHub</strong><small>Repositori kode</small></span><i>&rsaquo;</i></a>
+      <a class="certificate-item" href="https://facebook.com/hajijin.amri.9" target="_blank" rel="noreferrer"><span class="certificate-item-icon">f</span><span><strong>Facebook</strong><small>Media sosial</small></span><i>&rsaquo;</i></a>
+      <a class="certificate-item" href="https://www.youtube.com/@hajijinamri6706" target="_blank" rel="noreferrer"><span class="certificate-item-icon">YT</span><span><strong>YouTube</strong><small>Video dan tutorial</small></span><i>&rsaquo;</i></a>
+      <a class="certificate-item" href="https://scholar.google.co.id/scholar?hl=id&amp;as_sdt=0%2C5&amp;q=hajijin+amri&amp;btnG=" target="_blank" rel="noreferrer"><span class="certificate-item-icon">G</span><span><strong>Google Scholar</strong><small>Publikasi ilmiah</small></span><i>&rsaquo;</i></a>
+      <a class="certificate-item" href="https://doi.org/10.36378/jtos.v8i1.4403" target="_blank" rel="noreferrer"><span class="certificate-item-icon">DOI</span><span><strong>DOI Publikasi</strong><small>Jurnal ilmiah</small></span><i>&rsaquo;</i></a>
+    </div></details></section>
+  </main>
+  <footer>© 2026 Hajijin Amri. Dibuat dengan sepenuh hati.</footer>
+
+  <dialog class="certificate-preview"><button class="close-preview" aria-label="Tutup">&times;</button><p class="preview-issuer"></p><h2 class="preview-title"></h2><img class="preview-document" alt="Pratinjau sertifikat" /><button class="open-certificate-details">Lihat detail sertifikat &rarr;</button></dialog>
+  <dialog class="certificate-modal"><button class="close-modal" aria-label="Tutup">&times;</button><div class="modal-badge">&#10003;</div><p class="modal-issuer"></p><h2 class="modal-title"></h2><div class="modal-meta"><p>Diterbitkan <strong></strong></p><p>Berlaku hingga <strong></strong></p></div><img class="modal-document" alt="Dokumen sertifikat" /></dialog>
+  <dialog class="more-certificates-modal"><button class="close-more-cert" aria-label="Tutup">&times;</button><h2>More Sertifikat</h2><p>Pilih profil untuk melihat sertifikat dan pencapaian lainnya.</p><a class="more-cert-link" href="https://www.linkedin.com/in/hajijin-amri-5509b0206/" target="_blank" rel="noreferrer"><span>in</span><span>LinkedIn &rarr;</span></a><a class="more-cert-link" href="https://jinam.app" target="_blank" rel="noreferrer"><span>+</span><span>Lihat detail pencapaian<small>Berisi transkrip dan badge</small></span></a></dialog>
+  <script src="script.js"></script>
+</body>
+</html>

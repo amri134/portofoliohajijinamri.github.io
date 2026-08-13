@@ -4,9 +4,19 @@
   "private": true,
   "description": "Portfolio web Hajijin Amri",
   "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
     "start": "node server.js"
   },
   "engines": {
     "node": "22.x"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "latest",
+    "astro": "latest",
+    "@lucide/astro": "latest",
+    "tailwindcss": "latest",
+    "typescript": "latest"
   }
 }
