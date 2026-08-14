@@ -20,6 +20,41 @@ if (certificateList && moreCertificateTrigger && !certificateList.querySelector(
   pedas.addEventListener('click', () => { activeCertificate = pedas.dataset; previewModal.querySelector('.preview-issuer').textContent = activeCertificate.issuer; previewModal.querySelector('.preview-title').textContent = activeCertificate.title; previewModal.querySelector('.preview-document').src = activeCertificate.image; previewModal.showModal(); });
   certificateList.insertBefore(pedas, moreCertificateTrigger);
 }
+if (certificateList && moreCertificateTrigger) {
+  [
+    { title: 'NetAcad 2024', issued: '2024', image: '/sertifikat/netacad%202024.jpg' },
+    { title: 'NetAcad 2025', issued: '2025', image: '/sertifikat/netacad%202025.jpg' }
+  ].forEach(certificate => {
+    if (certificateList.querySelector(`[data-title="${certificate.title}"]`)) return;
+    const item = document.createElement('button');
+    item.className = 'certificate-item';
+    item.dataset.title = certificate.title; item.dataset.issuer = 'Cisco Networking Academy'; item.dataset.issued = certificate.issued; item.dataset.valid = 'Sertifikat pelatihan'; item.dataset.image = certificate.image;
+    item.innerHTML = `<span class="certificate-item-icon">N</span><span><strong>${certificate.title}</strong><small>Cisco Networking Academy · ${certificate.issued}</small></span><i>›</i>`;
+    item.addEventListener('click', () => { activeCertificate = item.dataset; previewModal.querySelector('.preview-issuer').textContent = activeCertificate.issuer; previewModal.querySelector('.preview-title').textContent = activeCertificate.title; previewModal.querySelector('.preview-document').src = activeCertificate.image; previewModal.showModal(); });
+    certificateList.insertBefore(item, moreCertificateTrigger);
+  });
+  const certificateCount = document.querySelector('#sertifikat .certificate-group summary small');
+  if (certificateCount) certificateCount.textContent = '8 dokumen terverifikasi';
+}
+if (certificateList && moreCertificateTrigger && !certificateList.querySelector('.netacad-group')) {
+  const netacadItems = ['NetAcad 2024', 'NetAcad 2025'].map(title => certificateList.querySelector(`[data-title="${title}"]`)).filter(Boolean);
+  if (netacadItems.length) {
+    const netacadGroup = document.createElement('details');
+    netacadGroup.className = 'netacad-group';
+    netacadGroup.innerHTML = '<summary><span><b>NetAcad</b><small>Cisco Networking Academy · 2 sertifikat</small></span><i>⌄</i></summary><div class="netacad-list"></div>';
+    const netacadList = netacadGroup.querySelector('.netacad-list');
+    netacadItems.forEach(item => netacadList.appendChild(item));
+    certificateList.insertBefore(netacadGroup, moreCertificateTrigger);
+  }
+}
+document.querySelectorAll('[data-open-netacad]').forEach(button => button.addEventListener('click', () => {
+  const certificateSection = document.querySelector('#sertifikat');
+  const netacadGroup = certificateSection?.querySelector('.netacad-group');
+  if (!certificateSection || !netacadGroup) return;
+  certificateGroup.open = true;
+  netacadGroup.open = true;
+  certificateSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}));
 const modalDocument = document.querySelector('.modal-document');
 if (modalDocument) modalDocument.addEventListener('click', () => modalDocument.classList.toggle('zoomed'));
 const projectGroups = document.querySelector('#proyek .project-groups');
