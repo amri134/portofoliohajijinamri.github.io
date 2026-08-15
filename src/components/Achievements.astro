@@ -1,35 +1,62 @@
-<section id="pencapaian" class="achievements-section">
-  <h2>Pencapaian</h2>
-  <details class="achievement-group">
-    <summary><span><b>Prestasi &amp; Publikasi</b><small>3 pencapaian terpilih</small></span><i>⌄</i></summary>
-    <div class="achievement-list">
-      <article class="achievement-card">
-        <div class="achievement-icon" aria-hidden="true">★</div>
-        <div>
-          <p class="achievement-meta">APJC NetAcad Riders Competition 2024 · Round 1</p>
-          <h3>Medali Perak</h3>
-          <p>Meraih medali perak pada kompetisi jaringan Cisco Academy tingkat nasional bersama perwakilan STMIK IKMI Cirebon.</p>
-          <div class="achievement-actions"><button class="project-link" type="button" data-open-netacad>Lihat sertifikat NetAcad →</button><a class="achievement-source" href="https://radarcirebon.disway.id/kota-cirebon/read/178144/stmik-ikmi-cirebon-boyong-3-medali-di-ajang-apjc-netacad-riders-2024" target="_blank" rel="noreferrer">Baca liputan →</a></div>
-        </div>
-      </article>
-      <article class="achievement-card">
-        <div class="achievement-icon" aria-hidden="true">J</div>
-        <div>
-          <p class="achievement-meta">Jurnal Teknologi dan Open Source · Vol. 8 No. 1, 2025</p>
-          <h3>Publikasi Ilmiah Sistem Absensi Wajah</h3>
-          <p>Penulis artikel tentang sistem absensi wajah real-time menggunakan CNN MobileNet dan MTCNN, dengan akurasi validasi 86%.</p>
-          <div class="achievement-actions"><a class="project-link" href="https://ejournal.uniks.ac.id/index.php/JTOS/article/view/4403" target="_blank" rel="noreferrer">Baca publikasi jurnal →</a></div>
-        </div>
-      </article>
-      <article class="achievement-card">
-        <div class="achievement-icon" aria-hidden="true">S</div>
-        <div>
-          <p class="achievement-meta">Prosiding Seminar Nasional SISFOTEK</p>
-          <h3>Publikasi Ilmiah SISFOTEK</h3>
-          <p>Publikasi karya ilmiah pada Prosiding Seminar Nasional Sistem Informasi dan Teknologi (SISFOTEK).</p>
-          <div class="achievement-actions"><a class="project-link" href="https://seminar.iaii.or.id/index.php/SISFOTEK/article/view/620" target="_blank" rel="noreferrer">Baca publikasi →</a></div>
-        </div>
-      </article>
-    </div>
-  </details>
+---
+import { ArrowUpRight, Award, BookOpenText, ChevronDown, Newspaper, Trophy } from "@lucide/astro";
+
+const achievements = [
+  {
+    title: "Medali Perak APJC NetAcad Riders 2024",
+    meta: "Kompetisi nasional Cisco Networking Academy",
+    icon: Trophy,
+    description: "Meraih medali perak bersama perwakilan STMIK IKMI Cirebon pada ajang APJC NetAcad Riders 2024.",
+    certificate: true,
+    source: "https://radarcirebon.disway.id/kota-cirebon/read/178144/stmik-ikmi-cirebon-boyong-3-medali-di-ajang-apjc-netacad-riders-2024",
+    sourceLabel: "Baca liputan",
+  },
+  {
+    title: "Publikasi Jurnal Sistem Absensi Wajah",
+    meta: "Jurnal Teknologi dan Open Source · 2025",
+    icon: BookOpenText,
+    description: "Menulis artikel mengenai sistem absensi wajah real-time menggunakan CNN MobileNet dan MTCNN dengan akurasi validasi 86%.",
+    source: "https://ejournal.uniks.ac.id/index.php/JTOS/article/view/4403",
+    sourceLabel: "Buka jurnal",
+  },
+  {
+    title: "Publikasi Ilmiah SISFOTEK",
+    meta: "Prosiding Seminar Nasional Sistem Informasi dan Teknologi",
+    icon: Award,
+    description: "Mempublikasikan karya ilmiah pada prosiding Seminar Nasional Sistem Informasi dan Teknologi (SISFOTEK).",
+    source: "https://seminar.iaii.or.id/index.php/SISFOTEK/article/view/620",
+    sourceLabel: "Buka publikasi",
+  },
+];
+---
+
+<section id="pencapaian" class="timeline-section">
+  <header class="showcase-heading">
+    <p class="section-kicker">Prestasi & publikasi</p>
+    <h2>Pencapaian</h2>
+    <p>Rekam jejak kompetisi dan publikasi ilmiah yang melengkapi perjalanan profesional saya.</p>
+  </header>
+
+  <div class="achievement-timeline">
+    {achievements.map((achievement) => {
+      const Icon = achievement.icon;
+      return (
+        <article class="timeline-entry">
+          <div class="timeline-marker"><Icon size={20} /></div>
+          <div class="timeline-content">
+            <p class="timeline-meta">{achievement.meta}</p>
+            <h3>{achievement.title}</h3>
+            <details>
+              <summary><ChevronDown size={19} /> Lihat ringkasan</summary>
+              <p>{achievement.description}</p>
+              <div class="timeline-actions">
+                {achievement.certificate && <button class="project-link" type="button" data-open-netacad>Lihat sertifikat NetAcad <ArrowUpRight size={16} /></button>}
+                <a href={achievement.source} target="_blank" rel="noreferrer"><Newspaper size={16} /> {achievement.sourceLabel}<ArrowUpRight size={16} /></a>
+              </div>
+            </details>
+          </div>
+        </article>
+      );
+    })}
+  </div>
 </section>
