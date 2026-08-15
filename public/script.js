@@ -5,151 +5,101 @@ const themeButton = document.querySelector('.theme-toggle');
 const detailModal = document.querySelector('.certificate-modal');
 const previewModal = document.querySelector('.certificate-preview');
 const moreCertificatesModal = document.querySelector('.more-certificates-modal');
+const certificateSection = document.querySelector('#sertifikat');
+const certificateMoreGroup = certificateSection?.querySelector('.certificate-more-group');
 let activeCertificate = null;
 let returnToContact = false;
-const firstProject = document.querySelector('#proyek .project-group');
-if (firstProject) firstProject.open = true;
-const certificateGroup = document.querySelector('#sertifikat .certificate-group');
-if (certificateGroup) certificateGroup.open = false;
-const certificateList = document.querySelector('#sertifikat .certificate-list');
-const moreCertificateTrigger = certificateList?.querySelector('.more-certificates-trigger');
-if (certificateList && moreCertificateTrigger && !certificateList.querySelector('[data-title="PEDAS Bronze Award"]')) {
-  const pedas = document.createElement('button');
-  pedas.className = 'certificate-item'; pedas.dataset.title = 'PEDAS Bronze Award'; pedas.dataset.issuer = 'APTIKOM'; pedas.dataset.issued = '19 September 2025'; pedas.dataset.valid = 'Peraih Bronze Award'; pedas.dataset.image = '/sertifikat/pedas.jpg';
-  pedas.innerHTML = '<span class="certificate-item-icon">★</span><span><strong>PEDAS Bronze Award</strong><small>APTIKOM · Peraih Bronze Award 2025</small></span><i>›</i>';
-  pedas.addEventListener('click', () => { activeCertificate = pedas.dataset; previewModal.querySelector('.preview-issuer').textContent = activeCertificate.issuer; previewModal.querySelector('.preview-title').textContent = activeCertificate.title; previewModal.querySelector('.preview-document').src = activeCertificate.image; previewModal.showModal(); });
-  certificateList.insertBefore(pedas, moreCertificateTrigger);
-}
-if (certificateList && moreCertificateTrigger) {
-  [
-    { title: 'NetAcad 2024', issued: '2024', image: '/sertifikat/netacad%202024.jpg' },
-    { title: 'NetAcad 2025', issued: '2025', image: '/sertifikat/netacad%202025.jpg' }
-  ].forEach(certificate => {
-    if (certificateList.querySelector(`[data-title="${certificate.title}"]`)) return;
-    const item = document.createElement('button');
-    item.className = 'certificate-item';
-    item.dataset.title = certificate.title; item.dataset.issuer = 'Cisco Networking Academy'; item.dataset.issued = certificate.issued; item.dataset.valid = 'Sertifikat pelatihan'; item.dataset.image = certificate.image;
-    item.innerHTML = `<span class="certificate-item-icon">N</span><span><strong>${certificate.title}</strong><small>Cisco Networking Academy · ${certificate.issued}</small></span><i>›</i>`;
-    item.addEventListener('click', () => { activeCertificate = item.dataset; previewModal.querySelector('.preview-issuer').textContent = activeCertificate.issuer; previewModal.querySelector('.preview-title').textContent = activeCertificate.title; previewModal.querySelector('.preview-document').src = activeCertificate.image; previewModal.showModal(); });
-    certificateList.insertBefore(item, moreCertificateTrigger);
-  });
-  const certificateCount = document.querySelector('#sertifikat .certificate-group summary small');
-  if (certificateCount) certificateCount.textContent = '8 dokumen terverifikasi';
-}
-if (certificateList && moreCertificateTrigger && !certificateList.querySelector('.netacad-group')) {
-  const netacadItems = ['NetAcad 2024', 'NetAcad 2025'].map(title => certificateList.querySelector(`[data-title="${title}"]`)).filter(Boolean);
-  if (netacadItems.length) {
-    const netacadGroup = document.createElement('details');
-    netacadGroup.className = 'netacad-group';
-    netacadGroup.innerHTML = '<summary><span><b>NetAcad</b><small>Cisco Networking Academy · 2 sertifikat</small></span><i>⌄</i></summary><div class="netacad-list"></div>';
-    const netacadList = netacadGroup.querySelector('.netacad-list');
-    netacadItems.forEach(item => netacadList.appendChild(item));
-    certificateList.insertBefore(netacadGroup, moreCertificateTrigger);
-  }
-}
-document.querySelectorAll('[data-open-netacad]').forEach(button => button.addEventListener('click', () => {
-  const certificateSection = document.querySelector('#sertifikat');
-  const netacadGroup = certificateSection?.querySelector('.netacad-group');
-  if (!certificateSection || !netacadGroup) return;
-  certificateGroup.open = true;
-  netacadGroup.open = true;
-  certificateSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}));
-const modalDocument = document.querySelector('.modal-document');
-if (modalDocument) modalDocument.addEventListener('click', () => modalDocument.classList.toggle('zoomed'));
-const projectGroups = document.querySelector('#proyek .project-groups');
-if (projectGroups) {
-  const projects = [...projectGroups.querySelectorAll('.project-group')];
-  projects.slice(1).forEach(project => {
-    project.hidden = true;
-    project.open = false;
-  });
-  if (projects.length > 1) {
-    const moreProjects = document.createElement('button');
-    moreProjects.type = 'button';
-    moreProjects.className = 'more-projects-button';
-    moreProjects.textContent = `More Proyek (${projects.length - 1})`;
-    moreProjects.setAttribute('aria-expanded', 'false');
-    moreProjects.addEventListener('click', () => {
-      const expanded = moreProjects.getAttribute('aria-expanded') === 'true';
-      projects.slice(1).forEach(project => { project.hidden = expanded; });
-      moreProjects.setAttribute('aria-expanded', String(!expanded));
-      moreProjects.textContent = expanded ? `More Proyek (${projects.length - 1})` : 'Sembunyikan proyek';
-    });
-    projectGroups.insertAdjacentElement('afterend', moreProjects);
-  }
-}
-document.querySelectorAll('img').forEach(image => { image.loading = image.classList.contains('avatar') ? 'eager' : 'lazy'; image.decoding = 'async'; });
 
-menuButton.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('open');
-  menuButton.setAttribute('aria-expanded', isOpen);
-});
-
-nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
-
-themeButton.addEventListener('click', () => {
-  body.classList.toggle('dark');
-  themeButton.querySelector('span').textContent = body.classList.contains('dark') ? '☾' : '☼';
-});
-
-function populateDetails(certificate) {
-  detailModal.querySelector('.modal-issuer').textContent = certificate.issuer;
-  detailModal.querySelectorAll('.modal-title').forEach(element => { element.textContent = certificate.title; });
-  const dates = detailModal.querySelectorAll('.modal-meta strong');
-  dates[0].textContent = certificate.issued;
-  dates[1].textContent = certificate.valid;
-  detailModal.querySelector('.modal-document').src = certificate.image;
-}
-
-document.querySelectorAll('#sertifikat .certificate-item:not(.more-certificates-trigger)').forEach(item => item.addEventListener('click', () => {
+function showCertificatePreview(item) {
   activeCertificate = item.dataset;
+  if (!activeCertificate?.title) return;
   previewModal.querySelector('.preview-issuer').textContent = activeCertificate.issuer;
   previewModal.querySelector('.preview-title').textContent = activeCertificate.title;
   previewModal.querySelector('.preview-document').src = activeCertificate.image;
   previewModal.showModal();
-}));
-function openCertificateByTitle(title) {
-  const item = [...document.querySelectorAll('#sertifikat .certificate-item')].find(entry => entry.dataset.title === title);
-  if (!item) return;
-  certificateGroup.open = true;
-  item.click();
-  document.querySelector('#sertifikat').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-document.querySelectorAll('.project-link[data-certificate-title]').forEach(link => link.addEventListener('click', event => { event.preventDefault(); openCertificateByTitle(link.dataset.certificateTitle); }));
-const projectCertificateMap = {'Lihat sertifikat Cloud Computing →':'Bangkit Cloud Computing','Lihat sertifikasi terkait →':'PEDAS Bronze Award','Lihat sertifikat PBI →':'Data Scientist Project-Based Internship'};
-document.querySelectorAll('.project-link').forEach(link => { const title = projectCertificateMap[link.textContent.trim()]; if (title) { link.dataset.certificateTitle = title; link.addEventListener('click', event => { event.preventDefault(); openCertificateByTitle(title); }); } });
 
-document.querySelector('.open-certificate-details').addEventListener('click', () => {
-  populateDetails(activeCertificate);
+function openCertificateByTitle(title) {
+  const item = [...document.querySelectorAll('#sertifikat .certificate-item')].find((entry) => entry.dataset.title === title);
+  if (!item) return;
+  if (certificateMoreGroup?.contains(item)) certificateMoreGroup.open = true;
+  certificateSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  showCertificatePreview(item);
+}
+
+document.querySelectorAll('#sertifikat .certificate-item').forEach((item) => item.addEventListener('click', () => showCertificatePreview(item)));
+
+document.querySelectorAll('[data-open-netacad]').forEach((button) => button.addEventListener('click', () => {
+  if (!certificateSection) return;
+  if (certificateMoreGroup) certificateMoreGroup.open = true;
+  certificateSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}));
+
+document.querySelectorAll('.project-more-group, .certificate-more-group').forEach((group) => group.addEventListener('toggle', () => {
+  const label = group.querySelector('summary b[data-open-label]');
+  if (label) label.textContent = group.open ? label.dataset.closeLabel : label.dataset.openLabel;
+}));
+
+const projectCertificateMap = {
+  'Lihat sertifikat Cloud Computing →': 'Cloud Computing',
+  'Lihat sertifikasi terkait →': 'PEDAS Bronze Award',
+  'Lihat sertifikat PBI →': 'Data Scientist Project-Based Internship',
+};
+document.querySelectorAll('.project-link').forEach((link) => {
+  const title = projectCertificateMap[link.textContent.trim()];
+  if (!title) return;
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    openCertificateByTitle(title);
+  });
+});
+
+document.querySelector('.open-certificate-details')?.addEventListener('click', () => {
+  if (!activeCertificate) return;
+  detailModal.querySelector('.modal-issuer').textContent = activeCertificate.issuer;
+  detailModal.querySelectorAll('.modal-title').forEach((element) => { element.textContent = activeCertificate.title; });
+  const dates = detailModal.querySelectorAll('.modal-meta strong');
+  dates[0].textContent = activeCertificate.issued;
+  dates[1].textContent = activeCertificate.valid;
+  detailModal.querySelector('.modal-document').src = activeCertificate.image;
   previewModal.close();
   detailModal.showModal();
 });
 
-document.querySelector('.close-preview').addEventListener('click', () => previewModal.close());
-document.querySelector('.close-modal').addEventListener('click', () => detailModal.close());
-document.querySelector('.more-certificates-trigger').addEventListener('click', () => moreCertificatesModal.showModal());
-document.querySelector('.close-more-cert').addEventListener('click', () => moreCertificatesModal.close());
-detailModal.addEventListener('close', () => {
-  const certificateSection = document.querySelector('#sertifikat');
-  document.querySelector('.certificate-group').open = true;
-  certificateSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-[previewModal, detailModal, moreCertificatesModal].forEach(modal => modal.addEventListener('click', event => {
+document.querySelector('.close-preview')?.addEventListener('click', () => previewModal.close());
+document.querySelector('.close-modal')?.addEventListener('click', () => detailModal.close());
+document.querySelector('.close-more-cert')?.addEventListener('click', () => moreCertificatesModal.close());
+
+detailModal?.addEventListener('close', () => certificateSection?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+[previewModal, detailModal, moreCertificatesModal].filter(Boolean).forEach((modal) => modal.addEventListener('click', (event) => {
   if (event.target === modal) modal.close();
 }));
+
+menuButton?.addEventListener('click', () => {
+  const isOpen = nav.classList.toggle('open');
+  menuButton.setAttribute('aria-expanded', isOpen);
+});
+nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => nav.classList.remove('open')));
+
+themeButton?.addEventListener('click', () => {
+  body.classList.toggle('dark');
+  themeButton.querySelector('span').textContent = body.classList.contains('dark') ? '☾' : '☼';
+});
+
+document.querySelectorAll('img').forEach((image) => {
+  image.loading = image.classList.contains('avatar') ? 'eager' : 'lazy';
+  image.decoding = 'async';
+});
 
 function restoreContactSection() {
   if (!returnToContact) return;
   returnToContact = false;
   const contactSection = document.querySelector('#kontak');
-  const contactGroup = contactSection.querySelector('.contact-group');
+  const contactGroup = contactSection?.querySelector('.contact-group');
+  if (!contactSection || !contactGroup) return;
   contactGroup.open = true;
   contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-document.querySelectorAll('#kontak .certificate-item[target="_blank"]').forEach(link => {
-  link.addEventListener('click', () => { returnToContact = true; });
-});
-
+document.querySelectorAll('#kontak .certificate-item[target="_blank"]').forEach((link) => link.addEventListener('click', () => { returnToContact = true; }));
 window.addEventListener('focus', () => window.setTimeout(restoreContactSection, 100));

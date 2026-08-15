@@ -1,60 +1,13 @@
 ---
-import { ArrowUpRight, BrainCircuit, Cloud, Database, Globe2, Mail, ScanFace, Trash2 } from "@lucide/astro";
+import { ArrowUpRight, BrainCircuit, ChevronDown, Database, Globe2, Mail, ScanFace, Trash2 } from "@lucide/astro";
 
 const projects = [
-  {
-    title: "ByeTrash",
-    label: "Sistem Klasifikasi Sampah",
-    description: "Capstone Bangkit Academy untuk mengklasifikasikan sampah melalui computer vision dan layanan REST API di Google Cloud.",
-    tags: ["Computer Vision", "Google Cloud", "REST API"],
-    icon: Trash2,
-    tone: "cyan",
-    certificate: "Lihat sertifikat Cloud Computing →",
-  },
-  {
-    title: "Sistem Absensi Wajah",
-    label: "Publikasi Ilmiah",
-    description: "Sistem absensi wajah real-time berbasis CNN, MobileNet, dan MTCNN yang dipublikasikan pada jurnal ilmiah.",
-    tags: ["CNN", "MobileNet", "MTCNN"],
-    icon: ScanFace,
-    tone: "violet",
-    link: "https://ejournal.uniks.ac.id/index.php/JTOS/article/view/4403",
-    linkLabel: "Buka publikasi jurnal",
-  },
-  {
-    title: "Campus Student Face Detection",
-    label: "Proyek Computer Vision",
-    description: "Eksplorasi deteksi wajah mahasiswa untuk mendukung identifikasi dan analisis citra secara terukur.",
-    tags: ["Face Detection", "Python", "Computer Vision"],
-    icon: ScanFace,
-    tone: "orange",
-  },
-  {
-    title: "Prediksi Tren Otomotif",
-    label: "Analitik Time Series",
-    description: "Analisis dan forecasting tren otomotif Indonesia dengan pendekatan data time series.",
-    tags: ["Data Analysis", "Time Series", "Forecasting"],
-    icon: BrainCircuit,
-    tone: "rose",
-    certificate: "Lihat sertifikasi terkait →",
-  },
-  {
-    title: "Student Subdomain & Mail",
-    label: "Layanan Infrastruktur",
-    description: "Perancangan layanan subdomain dan email mahasiswa berbasis Linux untuk kebutuhan akademik.",
-    tags: ["Linux", "DNS", "Mail Service"],
-    icon: Mail,
-    tone: "green",
-  },
-  {
-    title: "Data Science Home Credit",
-    label: "Project-Based Internship",
-    description: "Menyelesaikan studi kasus data science dengan machine learning, pemrograman, dan business acumen.",
-    tags: ["Data Science", "Machine Learning", "Python"],
-    icon: Database,
-    tone: "blue",
-    certificate: "Lihat sertifikat PBI →",
-  },
+  { title: "ByeTrash", label: "Sistem Klasifikasi Sampah", description: "Capstone Bangkit Academy untuk mengklasifikasikan sampah melalui computer vision dan layanan REST API di Google Cloud.", tags: ["Computer Vision", "Google Cloud", "REST API"], icon: Trash2, tone: "cyan", certificate: "Lihat sertifikat Cloud Computing →" },
+  { title: "Sistem Absensi Wajah", label: "Publikasi Ilmiah", description: "Sistem absensi wajah real-time berbasis CNN, MobileNet, dan MTCNN yang dipublikasikan pada jurnal ilmiah.", tags: ["CNN", "MobileNet", "MTCNN"], icon: ScanFace, tone: "violet", link: "https://ejournal.uniks.ac.id/index.php/JTOS/article/view/4403", linkLabel: "Buka publikasi jurnal" },
+  { title: "Campus Student Face Detection", label: "Proyek Computer Vision", description: "Eksplorasi deteksi wajah mahasiswa untuk mendukung identifikasi dan analisis citra secara terukur.", tags: ["Face Detection", "Python", "Computer Vision"], icon: ScanFace, tone: "orange" },
+  { title: "Prediksi Tren Otomotif", label: "Analitik Time Series", description: "Analisis dan forecasting tren otomotif Indonesia dengan pendekatan data time series.", tags: ["Data Analysis", "Time Series", "Forecasting"], icon: BrainCircuit, tone: "rose", certificate: "Lihat sertifikasi terkait →" },
+  { title: "Student Subdomain & Mail", label: "Layanan Infrastruktur", description: "Perancangan layanan subdomain dan email mahasiswa berbasis Linux untuk kebutuhan akademik.", tags: ["Linux", "DNS", "Mail Service"], icon: Mail, tone: "green" },
+  { title: "Data Science Home Credit", label: "Project-Based Internship", description: "Menyelesaikan studi kasus data science dengan machine learning, pemrograman, dan business acumen.", tags: ["Data Science", "Machine Learning", "Python"], icon: Database, tone: "blue", certificate: "Lihat sertifikat PBI →" },
 ];
 ---
 
@@ -66,31 +19,44 @@ const projects = [
   </header>
 
   <div class="showcase-grid">
-    {projects.map((project) => {
+    {projects.slice(0, 2).map((project) => {
       const Icon = project.icon;
       return (
         <article class:list={["showcase-card", `tone-${project.tone}`]}>
-          <div class="project-visual" aria-hidden="true">
-            <span class="visual-orbit orbit-one"></span>
-            <span class="visual-orbit orbit-two"></span>
-            <Icon size={68} strokeWidth={1.35} />
-            <span class="visual-grid"></span>
-          </div>
+          <div class="project-visual" aria-hidden="true"><span class="visual-orbit orbit-one"></span><span class="visual-orbit orbit-two"></span><Icon size={68} strokeWidth={1.35} /><span class="visual-grid"></span></div>
           <div class="showcase-card-body">
-            <p class="showcase-label">{project.label}</p>
-            <h3>{project.title}</h3>
-            <p class="showcase-description">{project.description}</p>
-            <div class="showcase-tags" aria-label="Teknologi yang digunakan">
-              {project.tags.map((tag) => <span>{tag}</span>)}
-            </div>
+            <p class="showcase-label">{project.label}</p><h3>{project.title}</h3><p class="showcase-description">{project.description}</p>
+            <div class="showcase-tags" aria-label="Teknologi yang digunakan">{project.tags.map((tag) => <span>{tag}</span>)}</div>
             <div class="showcase-actions">
               {project.certificate && <a class="showcase-link project-link" href="#sertifikat">{project.certificate}<ArrowUpRight size={17} /></a>}
               {project.link && <a class="showcase-link" href={project.link} target="_blank" rel="noreferrer">{project.linkLabel}<ArrowUpRight size={17} /></a>}
-              {!project.certificate && !project.link && <span class="showcase-status"><Globe2 size={16} /> Studi mandiri</span>}
             </div>
           </div>
         </article>
       );
     })}
+
+    <details class="project-more-group">
+      <summary><b data-open-label="Lihat proyek lainnya" data-close-label="Sembunyikan proyek">Lihat proyek lainnya</b><ChevronDown size={20} /></summary>
+      <div class="project-more-grid">
+        {projects.slice(2).map((project) => {
+          const Icon = project.icon;
+          return (
+            <article class:list={["showcase-card", `tone-${project.tone}`]}>
+              <div class="project-visual" aria-hidden="true"><span class="visual-orbit orbit-one"></span><span class="visual-orbit orbit-two"></span><Icon size={68} strokeWidth={1.35} /><span class="visual-grid"></span></div>
+              <div class="showcase-card-body">
+                <p class="showcase-label">{project.label}</p><h3>{project.title}</h3><p class="showcase-description">{project.description}</p>
+                <div class="showcase-tags" aria-label="Teknologi yang digunakan">{project.tags.map((tag) => <span>{tag}</span>)}</div>
+                <div class="showcase-actions">
+                  {project.certificate && <a class="showcase-link project-link" href="#sertifikat">{project.certificate}<ArrowUpRight size={17} /></a>}
+                  {project.link && <a class="showcase-link" href={project.link} target="_blank" rel="noreferrer">{project.linkLabel}<ArrowUpRight size={17} /></a>}
+                  {!project.certificate && !project.link && <span class="showcase-status"><Globe2 size={16} /> Studi mandiri</span>}
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </details>
   </div>
 </section>

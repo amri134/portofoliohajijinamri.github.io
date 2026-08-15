@@ -1,1 +1,71 @@
-<section class="certifications" id="sertifikat"><div class="section-heading"><h2>Sertifikasi</h2><p>Pencapaian profesional dan keahlian teknis yang saya miliki.</p></div><details class="certificate-group" open><summary><span><b>Sertifikasi &amp; Pelatihan</b><small>5 dokumen terverifikasi</small></span><i>⌄</i></summary><div class="certificate-list"><button class="certificate-item" data-title="Network Administrator Muda" data-issuer="BNSP" data-issued="2 Oktober 2024" data-valid="2 Oktober 2027" data-image="/sertifikat/BNSP%202024.jpg"><span class="certificate-item-icon">✓</span><span><strong>Network Administrator Muda</strong><small>BNSP · Aktif hingga Oktober 2027</small></span><i>›</i></button><button class="certificate-item" data-title="Network Administrator Muda" data-issuer="BNSP" data-issued="20 Oktober 2023" data-valid="20 Oktober 2026" data-image="/sertifikat/BNSP%202023.jpg"><span class="certificate-item-icon">✓</span><span><strong>Network Administrator Muda</strong><small>BNSP · Berlaku hingga Oktober 2026</small></span><i>›</i></button><button class="certificate-item" data-title="Bangkit Cloud Computing" data-issuer="Bangkit Academy" data-issued="10 Januari 2025" data-valid="Program selesai" data-image="/sertifikat/bangkit.jpg"><span class="certificate-item-icon">☁</span><span><strong>Cloud Computing</strong><small>Bangkit Academy · Selesai 2025</small></span><i>›</i></button><button class="certificate-item" data-title="Tim Data Dukung Akreditasi" data-issuer="STMIK IKMI Cirebon" data-issued="18 Agustus 2025" data-valid="Pencapaian profesional" data-image="/sertifikat/akreditasi.jpg"><span class="certificate-item-icon">★</span><span><strong>Tim Data Dukung Akreditasi</strong><small>STMIK IKMI Cirebon · Agustus 2025</small></span><i>›</i></button><button class="certificate-item" data-title="Data Scientist Project-Based Internship" data-issuer="Home Credit Indonesia" data-issued="6 Oktober – 3 November 2025" data-valid="Project-Based Internship selesai" data-image="/sertifikat/pbi.jpg"><span class="certificate-item-icon">PBI</span><span><strong>Data Scientist Project-Based Internship</strong><small>Home Credit Indonesia · Skor 85,5 (Excellent)</small></span><i>›</i></button><button class="certificate-item more-certificates-trigger" type="button"><span class="certificate-item-icon">+</span><span><strong>More Sertifikat</strong><small>Lihat sertifikat lainnya di profil eksternal</small></span><i>›</i></button></div></details></section>
+---
+import { Award, BadgeCheck, ChevronDown, Cloud, Database, Medal, Network, Plus } from "@lucide/astro";
+
+const certificates = [
+  { title: "Network Administrator Muda", issuer: "BNSP", status: "Aktif hingga Oktober 2027", issued: "2 Oktober 2024", valid: "2 Oktober 2027", image: "/sertifikat/BNSP%202024.jpg", icon: BadgeCheck },
+  { title: "Network Administrator Muda", issuer: "BNSP", status: "Berlaku hingga Oktober 2026", issued: "20 Oktober 2023", valid: "20 Oktober 2026", image: "/sertifikat/BNSP%202023.jpg", icon: Network },
+  { title: "Cloud Computing", issuer: "Bangkit Academy", status: "Program selesai 2025", issued: "10 Januari 2025", valid: "Program selesai", image: "/sertifikat/bangkit.jpg", icon: Cloud },
+  { title: "Tim Data Dukung Akreditasi", issuer: "STMIK IKMI Cirebon", status: "Pencapaian profesional", issued: "18 Agustus 2025", valid: "Pencapaian profesional", image: "/sertifikat/akreditasi.jpg", icon: Award },
+  { title: "Data Scientist Project-Based Internship", issuer: "Home Credit Indonesia", status: "Skor 85,5 · Excellent", issued: "6 Oktober – 3 November 2025", valid: "Program selesai", image: "/sertifikat/pbi.jpg", icon: Database },
+  { title: "PEDAS Bronze Award", issuer: "APTIKOM", status: "Peraih Bronze Award 2025", issued: "19 September 2025", valid: "Pencapaian kompetisi", image: "/sertifikat/pedas.jpg", icon: Medal },
+];
+
+const netacad = [
+  { title: "NetAcad 2024", issued: "2024", image: "/sertifikat/netacad%202024.jpg" },
+  { title: "NetAcad 2025", issued: "2025", image: "/sertifikat/netacad%202025.jpg" },
+];
+---
+
+<section class="certifications-showcase" id="sertifikat">
+  <header class="showcase-heading">
+    <p class="section-kicker">Kredensial profesional</p>
+    <h2>Sertifikasi</h2>
+    <p>Dokumen kompetensi, pelatihan, dan pencapaian yang memvalidasi kemampuan teknis saya.</p>
+  </header>
+
+  <div class="certificate-card-grid">
+    {certificates.slice(0, 3).map((certificate) => {
+      const Icon = certificate.icon;
+      return (
+        <article class="certificate-card">
+          <img src={certificate.image} alt={`Sertifikat ${certificate.title}`} />
+          <div class="certificate-card-body">
+            <div class="certificate-card-meta"><span><Icon size={19} /> {certificate.issuer}</span><small><BadgeCheck size={16} /> {certificate.status}</small></div>
+            <h3>{certificate.title}</h3>
+            <button class="certificate-item certificate-card-button" type="button" data-title={certificate.title} data-issuer={certificate.issuer} data-issued={certificate.issued} data-valid={certificate.valid} data-image={certificate.image}>Lihat detail sertifikat</button>
+          </div>
+        </article>
+      );
+    })}
+
+    <details class="certificate-more-group">
+      <summary><b data-open-label="Lihat sertifikat lainnya" data-close-label="Sembunyikan sertifikat">Lihat sertifikat lainnya</b><ChevronDown size={20} /></summary>
+      <div class="certificate-more-grid">
+        {certificates.slice(3).map((certificate) => {
+          const Icon = certificate.icon;
+          return (
+            <article class="certificate-card">
+              <img src={certificate.image} alt={`Sertifikat ${certificate.title}`} />
+              <div class="certificate-card-body">
+                <div class="certificate-card-meta"><span><Icon size={19} /> {certificate.issuer}</span><small><BadgeCheck size={16} /> {certificate.status}</small></div>
+                <h3>{certificate.title}</h3>
+                <button class="certificate-item certificate-card-button" type="button" data-title={certificate.title} data-issuer={certificate.issuer} data-issued={certificate.issued} data-valid={certificate.valid} data-image={certificate.image}>Lihat detail sertifikat</button>
+              </div>
+            </article>
+          );
+        })}
+
+        {netacad.map((certificate) => (
+          <article class="certificate-card">
+            <img src={certificate.image} alt={`Sertifikat ${certificate.title}`} />
+            <div class="certificate-card-body">
+              <div class="certificate-card-meta"><span><Network size={18} /> Cisco Networking Academy</span><small><BadgeCheck size={16} /> {certificate.issued}</small></div>
+              <h3>{certificate.title}</h3>
+              <button class="certificate-item certificate-card-button" type="button" data-title={certificate.title} data-issuer="Cisco Networking Academy" data-issued={certificate.issued} data-valid="Sertifikat pelatihan" data-image={certificate.image}>Lihat detail sertifikat</button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </details>
+  </div>
+</section>

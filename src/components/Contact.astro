@@ -1,1 +1,72 @@
-<section class="contact-section" id="kontak"><div class="section-heading"><h2>Kontak &amp; Media Sosial</h2><p>Terhubung melalui kanal profesional, sosial, dan publikasi.</p></div><details class="certificate-group contact-group"><summary><span><b>Tautan Profesional</b><small>9 kanal tersedia</small></span><i>⌄</i></summary><div class="certificate-list"><a class="certificate-item" href="https://jinam.app" target="_blank" rel="noreferrer"><span class="certificate-item-icon">◎</span><span><strong>More Links</strong><small>Lihat portofolio, transkrip nilai, dan pencapaian saya</small></span><i>›</i></a><a class="certificate-item" href="https://www.linkedin.com/in/hajijin-amri-5509b0206/" target="_blank" rel="noreferrer"><span class="certificate-item-icon">in</span><span><strong>LinkedIn</strong><small>Profil profesional</small></span><i>›</i></a><a class="certificate-item" href="mailto:hajijinamri@gmail.com" target="_blank" rel="noreferrer"><span class="certificate-item-icon">@</span><span><strong>Email</strong><small>Hubungi saya secara langsung</small></span><i>›</i></a><a class="certificate-item" href="https://www.instagram.com/hajijin_amri" target="_blank" rel="noreferrer"><span class="certificate-item-icon">IG</span><span><strong>Instagram</strong><small>Media sosial</small></span><i>›</i></a><a class="certificate-item" href="https://github.com/amri134" target="_blank" rel="noreferrer"><span class="certificate-item-icon">GH</span><span><strong>GitHub</strong><small>Repositori kode</small></span><i>›</i></a><a class="certificate-item" href="https://facebook.com/hajijin.amri.9" target="_blank" rel="noreferrer"><span class="certificate-item-icon">f</span><span><strong>Facebook</strong><small>Media sosial</small></span><i>›</i></a><a class="certificate-item" href="https://www.youtube.com/@hajijinamri6706" target="_blank" rel="noreferrer"><span class="certificate-item-icon">YT</span><span><strong>YouTube</strong><small>Video dan tutorial</small></span><i>›</i></a><a class="certificate-item" href="https://scholar.google.co.id/scholar?q=hajijin+amri" target="_blank" rel="noreferrer"><span class="certificate-item-icon">G</span><span><strong>Google Scholar</strong><small>Publikasi ilmiah</small></span><i>›</i></a><a class="certificate-item" href="https://doi.org/10.36378/jtos.v8i1.4403" target="_blank" rel="noreferrer"><span class="certificate-item-icon">DOI</span><span><strong>DOI Publikasi</strong><small>Jurnal ilmiah</small></span><i>›</i></a></div></details></section>
+---
+import { AtSign, BadgeCheck, BookOpenCheck, BriefcaseBusiness, Camera, ChevronDown, Code, ExternalLink, FileText, Globe, Link, Mail, Play } from "@lucide/astro";
+
+const linkGroups = [
+  {
+    title: "Utama",
+    description: "Kontak langsung dan portofolio profesional.",
+    icon: BriefcaseBusiness,
+    links: [
+      { title: "Email", description: "Hubungi saya secara langsung", url: "mailto:hajijinamri@gmail.com", icon: Mail },
+      { title: "LinkedIn", description: "Profil profesional", url: "https://www.linkedin.com/in/hajijin-amri-5509b0206/", icon: BriefcaseBusiness },
+      { title: "Portofolio", description: "Proyek, pencapaian, dan tautan lainnya", url: "https://jinam.app", icon: Globe },
+    ],
+  },
+  {
+    title: "Dokumen & Kredensial",
+    description: "Transkrip pembelajaran dan badge terverifikasi.",
+    icon: FileText,
+    links: [
+      { title: "Learning Transcript", description: "Transcript Cisco Networking Academy", url: "https://drive.google.com/file/d/1zVXYmOl0MUYczLL3gu0n11baPyyuvIeF/view?usp=sharing", icon: FileText },
+      { title: "Google Skills", description: "Badge", url: "https://www.skills.google/public_profiles/64cd8a16-6afc-4322-8e79-5f976c68c85d", icon: BadgeCheck },
+      { title: "Credly v1", description: "Badge Cisco Networking Academy", url: "https://www.credly.com/users/hajijin-amri", icon: BadgeCheck },
+      { title: "Credly v2", description: "Badge Google Skills", url: "https://www.credly.com/users/hajijin-amri.61a238eb", icon: Link },
+    ],
+  },
+  {
+    title: "Karya & Publikasi",
+    description: "Repositori, artikel ilmiah, dan identitas publikasi.",
+    icon: BookOpenCheck,
+    links: [
+      { title: "GitHub", description: "Repositori kode", url: "https://github.com/amri134", icon: Code },
+      { title: "Google Scholar", description: "Publikasi ilmiah", url: "https://scholar.google.co.id/scholar?q=hajijin+amri", icon: BookOpenCheck },
+      { title: "DOI Publikasi", description: "Jurnal ilmiah", url: "https://doi.org/10.36378/jtos.v8i1.4403", icon: FileText },
+      { title: "Publikasi SISFOTEK", description: "Prosiding Seminar Nasional Sistem Informasi dan Teknologi", url: "https://seminar.iaii.or.id/index.php/SISFOTEK/article/view/620", icon: BookOpenCheck },
+    ],
+  },
+  {
+    title: "Media Sosial",
+    description: "Kanal sosial, video, dan aktivitas digital.",
+    icon: Camera,
+    links: [
+      { title: "Instagram", description: "Media sosial", url: "https://www.instagram.com/hajijin_amri", icon: Camera },
+      { title: "YouTube", description: "Video dan tutorial", url: "https://www.youtube.com/@hajijinamri6706", icon: Play },
+      { title: "Facebook", description: "Media sosial", url: "https://facebook.com/hajijin.amri.9", icon: AtSign },
+    ],
+  },
+];
+---
+
+<section class="contact-section" id="kontak">
+  <div class="section-heading"><h2>Tautan Profesional</h2><p>Kontak, dokumen pendukung, kredensial, karya, publikasi, dan media sosial.</p></div>
+  <div class="link-category-grid">
+    {linkGroups.map((group) => {
+      const GroupIcon = group.icon;
+      return (
+        <details class="link-category">
+          <summary>
+            <span class="link-category-icon"><GroupIcon size={23} /></span>
+            <span class="link-category-copy"><b>{group.title}</b><small>{group.description}</small><em>{group.links.length} tautan</em></span>
+            <ChevronDown class="link-category-chevron" size={20} />
+          </summary>
+          <div class="link-category-list">
+            {group.links.map((link) => {
+              const Icon = link.icon;
+              return <a href={link.url} target="_blank" rel="noreferrer"><Icon size={18} /><span><strong>{link.title}</strong><small>{link.description}</small></span><ExternalLink size={16} /></a>;
+            })}
+          </div>
+        </details>
+      );
+    })}
+  </div>
+</section>
