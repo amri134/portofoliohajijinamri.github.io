@@ -10,6 +10,8 @@ const achievements = [
     certificate: true,
     source: "https://radarcirebon.disway.id/kota-cirebon/read/178144/stmik-ikmi-cirebon-boyong-3-medali-di-ajang-apjc-netacad-riders-2024",
     sourceLabel: "Baca liputan",
+    pdf: "https://www.americadigital.org/2023/01_NetAcad/12/APJCNetAcadRiders24/01_Website/docs/APJC%20NetAcad%20Riders%20Round%201%20Result%202025.pdf",
+    pdfLabel: "Lihat PDF americadigital.org",
   },
   {
     title: "Publikasi Jurnal Sistem Absensi Wajah",
@@ -52,6 +54,7 @@ const achievements = [
               <div class="timeline-actions">
                 {achievement.certificate && <button class="project-link" type="button" data-open-netacad>Lihat sertifikat NetAcad <ArrowUpRight size={16} /></button>}
                 <a href={achievement.source} target="_blank" rel="noreferrer"><Newspaper size={16} /> {achievement.sourceLabel}<ArrowUpRight size={16} /></a>
+                {achievement.pdf && <a href={achievement.pdf} target="_blank" rel="noreferrer"><Newspaper size={16} /> {achievement.pdfLabel}<ArrowUpRight size={16} /></a>}
               </div>
             </details>
           </div>
