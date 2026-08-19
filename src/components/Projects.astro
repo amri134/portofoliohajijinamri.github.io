@@ -1,9 +1,11 @@
 ---
-import { ArrowUpRight, BrainCircuit, ChevronDown, Database, Globe2, Mail, ScanFace, Trash2 } from "@lucide/astro";
+import { ArrowUpRight, BrainCircuit, ChevronDown, Database, Globe2, Mail, ScanFace, ShieldAlert, ShoppingCart, Trash2 } from "@lucide/astro";
 
 const projects = [
+  { title: "Wazuh AI Security Alert", label: "Monitoring Keamanan Real-Time", description: "Sistem monitoring keamanan yang mengintegrasikan Wazuh Cloud, Telegram Bot, dan Gemini AI untuk analisis serta rekomendasi penanganan alert.", tags: ["Wazuh", "Telegram Bot", "Gemini AI"], icon: ShieldAlert, tone: "cyan", links: [{ href: "https://youtu.be/xF2S9AAre7M?si=990d6rcGA0KTI6gU", label: "Lihat video demo" }, { href: "https://github.com/amri134/wazuh-on-telegram", label: "Lihat repository" }] },
+  { title: "Sistem Absensi Wajah", label: "Publikasi Ilmiah", description: "Sistem absensi wajah real-time berbasis CNN, MobileNet, dan MTCNN yang dipublikasikan pada jurnal ilmiah.", tags: ["CNN", "MobileNet", "MTCNN"], icon: ScanFace, tone: "violet", links: [{ href: "https://ejournal.uniks.ac.id/index.php/JTOS/article/view/4403", label: "Buka publikasi jurnal" }] },
   { title: "ByeTrash", label: "Sistem Klasifikasi Sampah", description: "Capstone Bangkit Academy untuk mengklasifikasikan sampah melalui computer vision dan layanan REST API di Google Cloud.", tags: ["Computer Vision", "Google Cloud", "REST API"], icon: Trash2, tone: "cyan", certificate: "Lihat sertifikat Cloud Computing" },
-  { title: "Sistem Absensi Wajah", label: "Publikasi Ilmiah", description: "Sistem absensi wajah real-time berbasis CNN, MobileNet, dan MTCNN yang dipublikasikan pada jurnal ilmiah.", tags: ["CNN", "MobileNet", "MTCNN"], icon: ScanFace, tone: "violet", link: "https://ejournal.uniks.ac.id/index.php/JTOS/article/view/4403", linkLabel: "Buka publikasi jurnal" },
+  { title: "E-Commerce QRIS", label: "Sistem Pemesanan & Pembayaran", description: "Aplikasi pemesanan menu dengan invoice QRIS dinamis, pelacakan pembayaran otomatis, serta integrasi notifikasi Telegram dan Shopee.", tags: ["QRIS", "Express.js", "MongoDB"], icon: ShoppingCart, tone: "green", links: [{ href: "https://www.youtube.com/shorts/prSWNtg_D3M", label: "Lihat video demo" }] },
   { title: "Campus Student Face Detection", label: "Proyek Computer Vision", description: "Eksplorasi deteksi wajah mahasiswa untuk mendukung identifikasi dan analisis citra secara terukur.", tags: ["Face Detection", "Python", "Computer Vision"], icon: ScanFace, tone: "orange" },
   { title: "Prediksi Tren Otomotif", label: "Analitik Time Series", description: "Analisis dan forecasting tren otomotif Indonesia dengan pendekatan data time series.", tags: ["Data Analysis", "Time Series", "Forecasting"], icon: BrainCircuit, tone: "rose", certificate: "Lihat sertifikasi terkait" },
   { title: "Student Subdomain & Mail", label: "Layanan Infrastruktur", description: "Perancangan layanan subdomain dan email mahasiswa berbasis Linux untuk kebutuhan akademik.", tags: ["Linux", "DNS", "Mail Service"], icon: Mail, tone: "green" },
@@ -27,9 +29,9 @@ const projects = [
           <div class="showcase-card-body">
             <p class="showcase-label">{project.label}</p><h3>{project.title}</h3><p class="showcase-description">{project.description}</p>
             <div class="showcase-tags" aria-label="Teknologi yang digunakan">{project.tags.map((tag) => <span>{tag}</span>)}</div>
-            <div class="showcase-actions">
+            <div class="showcase-actions" style="gap: 16px; flex-wrap: wrap;">
               {project.certificate && <a class="showcase-link project-link project-certificate-link" href="#sertifikat">{project.certificate}<ArrowUpRight size={17} /></a>}
-              {project.link && <a class="showcase-link" href={project.link} target="_blank" rel="noreferrer">{project.linkLabel}<ArrowUpRight size={17} /></a>}
+              {project.links?.map((link) => <a class="showcase-link" href={link.href} target="_blank" rel="noreferrer">{link.label}<ArrowUpRight size={17} /></a>)}
             </div>
           </div>
         </article>
@@ -47,10 +49,10 @@ const projects = [
               <div class="showcase-card-body">
                 <p class="showcase-label">{project.label}</p><h3>{project.title}</h3><p class="showcase-description">{project.description}</p>
                 <div class="showcase-tags" aria-label="Teknologi yang digunakan">{project.tags.map((tag) => <span>{tag}</span>)}</div>
-                <div class="showcase-actions">
+                <div class="showcase-actions" style="gap: 16px; flex-wrap: wrap;">
                   {project.certificate && <a class="showcase-link project-link project-certificate-link" href="#sertifikat">{project.certificate}<ArrowUpRight size={17} /></a>}
-                  {project.link && <a class="showcase-link" href={project.link} target="_blank" rel="noreferrer">{project.linkLabel}<ArrowUpRight size={17} /></a>}
-                  {!project.certificate && !project.link && <span class="showcase-status"><Globe2 size={16} /> Studi mandiri</span>}
+                  {project.links?.map((link) => <a class="showcase-link" href={link.href} target="_blank" rel="noreferrer">{link.label}<ArrowUpRight size={17} /></a>)}
+                  {!project.certificate && !project.links && <span class="showcase-status"><Globe2 size={16} /> Studi mandiri</span>}
                 </div>
               </div>
             </article>
