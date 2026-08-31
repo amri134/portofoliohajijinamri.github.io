@@ -1,0 +1,55 @@
+---
+import { ArrowLeft, ArrowUpRight, Globe2 } from "@lucide/astro";
+import { projects } from "../data/projects";
+import "../../style.css";
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Kumpulan proyek Hajijin Amri." />
+    <title>Semua Proyek — Hajijin Amri</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" />
+  </head>
+  <body class="dark">
+    <header class="projects-header"><a class="brand" href="/">Hajijin Amri</a><a class="back-link" href="/"><ArrowLeft size={18} /> Kembali ke beranda</a></header>
+    <main>
+      <section class="showcase-section projects-page">
+        <header class="showcase-heading"><p class="section-kicker">Portofolio lengkap</p><h1>Semua Proyek</h1><p>Kumpulan karya pada keamanan siber, cloud, computer vision, data, dan layanan infrastruktur.</p></header>
+        <div class="showcase-grid">
+          {projects.map((project) => {
+            const Icon = project.icon;
+            return <article class:list={["showcase-card", `tone-${project.tone}`]}>
+              <div class="project-visual" aria-hidden="true"><span class="visual-orbit orbit-one"></span><span class="visual-orbit orbit-two"></span><Icon size={68} strokeWidth={1.35} /><span class="visual-grid"></span></div>
+              <div class="showcase-card-body">
+                <p class="showcase-label">{project.label}</p><h3>{project.title}</h3><p class="showcase-description">{project.description}</p>
+                <div class="showcase-tags" aria-label="Teknologi yang digunakan">{project.tags.map((tag) => <span>{tag}</span>)}</div>
+                <div class="showcase-actions" style="gap: 16px; flex-wrap: wrap;">
+                  {project.certificate && <a class="showcase-link project-link project-certificate-link" href="/#sertifikat">{project.certificate}<ArrowUpRight size={17} /></a>}
+                  {project.links?.map((link) => <a class="showcase-link" href={link.href} target="_blank" rel="noreferrer">{link.label}<ArrowUpRight size={17} /></a>)}
+                  {!project.certificate && !project.links && <span class="showcase-status"><Globe2 size={16} /> Studi mandiri</span>}
+                </div>
+              </div>
+            </article>;
+          })}
+        </div>
+      </section>
+    </main>
+    <footer>© 2026 Hajijin Amri. Dibuat dengan sepenuh hati.</footer>
+  </body>
+</html>
+
+<style>
+  .showcase-description { text-align: justify; text-justify: inter-word; }
+  .projects-header { display: flex; align-items: center; justify-content: space-between; width: min(100% - 48px, 940px); margin: 28px auto 0; padding: 18px 0; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-weight: 700; text-decoration: none; }
+  .back-link:hover { color: var(--accent); }
+  .projects-page { padding-top: 52px; }
+  .projects-page h1 { font-size: clamp(38px, 6vw, 56px); }
+  @media (max-width: 720px) { .projects-header { width: calc(100% - 36px); margin-top: 12px; } .projects-header .brand { font-size: 22px; } .back-link { font-size: 14px; } .projects-page { padding-top: 34px; } }
+</style>

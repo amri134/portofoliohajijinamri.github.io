@@ -1,65 +1,39 @@
 ---
-import { ArrowUpRight, BrainCircuit, ChevronDown, Database, Globe2, LayoutDashboard, Mail, ScanFace, ShieldAlert, ShoppingCart, Trash2 } from "@lucide/astro";
-
-const projects = [
-  { title: "Wazuh AI Security Alert", label: "Monitoring Keamanan Real-Time", description: "Sistem monitoring keamanan yang mengintegrasikan Wazuh Cloud, Telegram Bot, dan Gemini AI untuk analisis serta rekomendasi penanganan alert.", tags: ["Wazuh", "Telegram Bot", "Gemini AI"], icon: ShieldAlert, tone: "cyan", links: [{ href: "https://youtu.be/xF2S9AAre7M?si=990d6rcGA0KTI6gU", label: "Lihat video demo" }, { href: "https://github.com/amri134/wazuh-on-telegram", label: "Lihat repository" }] },
-  { title: "Sentinel Lab", label: "SOC Dashboard Demo", description: "Dashboard SOC multi-pengguna dengan alert dan incident sintetis, visualisasi analitik, serta rancangan integrasi Wazuh dan Zabbix yang aman melalui Appwrite.", tags: ["React", "Appwrite", "Recharts"], icon: LayoutDashboard, tone: "blue", links: [{ href: "https://soc.hajijinamri.me/", label: "Buka dashboard" }, { href: "https://github.com/amri134/soc-demo-dashboard", label: "Lihat repository" }] },
-  { title: "Sistem Absensi Wajah", label: "Publikasi Ilmiah", description: "Sistem absensi wajah real-time berbasis CNN, MobileNet, dan MTCNN yang dipublikasikan pada jurnal ilmiah.", tags: ["CNN", "MobileNet", "MTCNN"], icon: ScanFace, tone: "violet", links: [{ href: "https://ejournal.uniks.ac.id/index.php/JTOS/article/view/4403", label: "Buka publikasi jurnal" }] },
-  { title: "ByeTrash", label: "Sistem Klasifikasi Sampah", description: "Capstone Bangkit Academy untuk mengklasifikasikan sampah melalui computer vision dan layanan REST API di Google Cloud.", tags: ["Computer Vision", "Google Cloud", "REST API"], icon: Trash2, tone: "cyan", certificate: "Lihat sertifikat Cloud Computing" },
-  { title: "E-Commerce QRIS", label: "Sistem Pemesanan & Pembayaran", description: "Aplikasi pemesanan menu dengan invoice QRIS dinamis, pelacakan pembayaran otomatis.", tags: ["QRIS", "Express.js", "MongoDB"], icon: ShoppingCart, tone: "green", links: [{ href: "https://www.youtube.com/shorts/prSWNtg_D3M", label: "Lihat video demo" }] },
-  { title: "Campus Student Face Detection", label: "Proyek Computer Vision", description: "Eksplorasi deteksi wajah mahasiswa untuk mendukung identifikasi dan analisis citra secara terukur.", tags: ["Face Detection", "Python", "Computer Vision"], icon: ScanFace, tone: "orange" },
-  { title: "Prediksi Tren Otomotif", label: "Analitik Time Series", description: "Analisis dan forecasting tren otomotif Indonesia dengan pendekatan data time series.", tags: ["Data Analysis", "Time Series", "Forecasting"], icon: BrainCircuit, tone: "rose", certificate: "Lihat sertifikasi terkait" },
-  { title: "Student Subdomain & Mail", label: "Layanan Infrastruktur", description: "Perancangan layanan subdomain dan email mahasiswa berbasis Linux untuk kebutuhan akademik.", tags: ["Linux", "DNS", "Mail Service"], icon: Mail, tone: "green" },
-  { title: "Data Science Home Credit", label: "Project-Based Internship", description: "Menyelesaikan studi kasus data science dengan machine learning, pemrograman, dan business acumen.", tags: ["Data Science", "Machine Learning", "Python"], icon: Database, tone: "blue", certificate: "Lihat sertifikat PBI" },
-];
+import { ArrowUpRight } from "@lucide/astro";
+import { projects } from "../data/projects";
 ---
 
 <section id="proyek" class="showcase-section">
   <header class="showcase-heading">
     <p class="section-kicker">Portofolio terpilih</p>
     <h2>Proyek</h2>
-    <p>Beberapa karya yang menunjukkan penerapan keahlian pada cloud, data, jaringan, dan computer vision.</p>
+    <p>Empat karya unggulan yang menunjukkan penerapan keahlian pada security, cloud, data, dan pengembangan aplikasi.</p>
   </header>
 
   <div class="showcase-grid">
-    {projects.slice(0, 2).map((project) => {
+    {projects.slice(0, 4).map((project) => {
       const Icon = project.icon;
       return (
         <article class:list={["showcase-card", `tone-${project.tone}`]}>
           <div class="project-visual" aria-hidden="true"><span class="visual-orbit orbit-one"></span><span class="visual-orbit orbit-two"></span><Icon size={68} strokeWidth={1.35} /><span class="visual-grid"></span></div>
           <div class="showcase-card-body">
-            <p class="showcase-label">{project.label}</p><h3>{project.title}</h3><p class="showcase-description">{project.description}</p>
+            <p class="showcase-label">{project.label}</p><h3>{project.title}</h3><p class="showcase-description">{project.summary ?? project.description}</p>
             <div class="showcase-tags" aria-label="Teknologi yang digunakan">{project.tags.map((tag) => <span>{tag}</span>)}</div>
             <div class="showcase-actions" style="gap: 16px; flex-wrap: wrap;">
-              {project.certificate && <a class="showcase-link project-link project-certificate-link" href="#sertifikat">{project.certificate}<ArrowUpRight size={17} /></a>}
               {project.links?.map((link) => <a class="showcase-link" href={link.href} target="_blank" rel="noreferrer">{link.label}<ArrowUpRight size={17} /></a>)}
             </div>
           </div>
         </article>
       );
     })}
-
-    <details class="project-more-group">
-      <summary><b data-open-label="Lihat proyek lainnya" data-close-label="Sembunyikan proyek">Lihat proyek lainnya</b><ChevronDown size={20} /></summary>
-      <div class="project-more-grid">
-        {projects.slice(2).map((project) => {
-          const Icon = project.icon;
-          return (
-            <article class:list={["showcase-card", `tone-${project.tone}`]}>
-              <div class="project-visual" aria-hidden="true"><span class="visual-orbit orbit-one"></span><span class="visual-orbit orbit-two"></span><Icon size={68} strokeWidth={1.35} /><span class="visual-grid"></span></div>
-              <div class="showcase-card-body">
-                <p class="showcase-label">{project.label}</p><h3>{project.title}</h3><p class="showcase-description">{project.description}</p>
-                <div class="showcase-tags" aria-label="Teknologi yang digunakan">{project.tags.map((tag) => <span>{tag}</span>)}</div>
-                <div class="showcase-actions" style="gap: 16px; flex-wrap: wrap;">
-                  {project.certificate && <a class="showcase-link project-link project-certificate-link" href="#sertifikat">{project.certificate}<ArrowUpRight size={17} /></a>}
-                  {project.links?.map((link) => <a class="showcase-link" href={link.href} target="_blank" rel="noreferrer">{link.label}<ArrowUpRight size={17} /></a>)}
-                  {!project.certificate && !project.links && <span class="showcase-status"><Globe2 size={16} /> Studi mandiri</span>}
-                </div>
-              </div>
-            </article>
-          );
-        })}
-      </div>
-    </details>
   </div>
+
+  <div class="all-projects-action"><a class="all-projects-link" href="/proyek">Lihat semua proyek <ArrowUpRight size={18} /></a></div>
 </section>
+
+<style>
+  .showcase-description { text-align: justify; text-justify: inter-word; }
+  .all-projects-action { display: flex; justify-content: center; margin-top: 34px; }
+  .all-projects-link { display: inline-flex; align-items: center; gap: 8px; padding: 13px 18px; border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); font-weight: 800; text-decoration: none; }
+  .all-projects-link:hover { background: var(--accent); color: #fff; }
+</style>

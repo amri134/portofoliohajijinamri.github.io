@@ -39,7 +39,9 @@ const selectEncoding = (acceptEncoding = "", contentType) => {
 
 const server = http.createServer((request, response) => {
   const requestPath = decodeURIComponent(request.url.split("?")[0]);
-  const relativePath = requestPath === "/" || requestPath === "/favicon.ico" ? (requestPath === "/favicon.ico" ? "/favicon.svg" : "/index.html") : requestPath;
+  const relativePath = requestPath === "/" || requestPath === "/favicon.ico"
+    ? (requestPath === "/favicon.ico" ? "/favicon.svg" : "/index.html")
+    : path.extname(requestPath) ? requestPath : `${requestPath.replace(/\/$/, "")}/index.html`;
   const filePath = path.resolve(root, `.${relativePath}`);
 
   if (!filePath.startsWith(root + path.sep)) {
